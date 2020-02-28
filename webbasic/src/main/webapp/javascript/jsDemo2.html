@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+  /* 1. 函数 ：函数是在页面加载后调用 */
+  /* 2.直接写js，页面加载时调用 */
+  /* 浏览器渲染页面是从上到下，所以此处js会比body先加载*/
+  console.log("控制台打印");
+  //声明变量
+  var x;
+  console.log(x);
+  x=8;
+  console.log(x);
+  var y="hello";
+  console.log(y);
+ 
+  var var1="hi";
+  var var2=9;
+  var var3=true;
+  console.log(var1+var2);
+  console.log(var1+var3);
+  console.log(var2+var3);
+  console.log(var3+var3);
+  
+  console.log(parseInt("3.14"));
+  console.log(parseInt("5.6"));
+  console.log(parseInt("adv"));
+  console.log(typeof(var3));
+  console.log(isNaN("adv"));
+  console.log(isNaN(45.0));
+
+  var k=5;
+  var m="5";
+  console.log(k==m);
+  console.log(k===m);
+  
+  /* 条件表达式 */
+  var mk=6;
+  if(mk){
+	  console.log("ok");
+  }
+  if(mk!=null&&mk!=""&&mk!=undefined&&mk!=0){
+	  console.log("ok");
+  }
+  mk && console.log("over")
+</script>
+</head>
+<body>
+  <p>在页面上演示js基本语法</p>
+</body>
+</html>

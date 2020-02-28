@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="cn.poem.dao.UserDao">
+  
+   <!--方式二  -->
+   <!-- 使用resultMap解决表的字段名与实体类的属性名不一致的情况 -->
+   <resultMap type="cn.poem.entity.User" id="userResultMap">
+    <id property="id" column="id"/>
+    <result property="name" column="name" />
+    <result property="password" column="password" />
+    <result property="nick" column="nick" />
+    <result property="email" column="email" />
+   </resultMap>
+   <!-- 加别名或自己配置resultMap -->
+   <select id="findUserByName" parameterType="String" resultMap="userResultMap">
+      SELECT id,name,password,nick,email
+      FROM poem_user WHERE name=#{name} 
+   </select>
+   <insert id="insertUser" parameterType="cn.poem.entity.User" >
+     INSERT INTO poem_user(name,password,nick,email) 
+     VALUES(#{name},#{password},#{nick},#{email})
+   </insert>
+   </mapper>

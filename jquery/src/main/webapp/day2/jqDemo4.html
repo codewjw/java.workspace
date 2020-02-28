@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>模拟事件</title>
+<style>
+   body {
+     position:relative;
+   }
+   #dg{
+       width:300px;
+       height:300px;
+       border:1px solid red;
+       /* float:right; */
+       position:fixed;
+       right:10px;
+       bottom:10px;
+   }
+   #dg>input {
+      width:30px;
+      height:30px;
+      float:right;
+   }
+</style>
+
+<script src="../js/jquery-1.11.1.js"></script>
+<script>
+   $(function(){
+	  //给按钮绑定单击事件
+	  $("#dg input").click(function(){
+		  //让广告向上收起
+		  //$("#dg").slideToggle(1000);
+		  $("#dg").slideUp(1000);
+	  });
+	  setTimeout(function(){
+		  //3秒后自动触发单击按钮
+		  $("#dg input").trigger("click");
+	  },3000)
+   })
+</script>
+</head>
+<body>
+  <div id="dg">
+    <input type="button"  value="X">
+  </div>
+</body>
+</html>

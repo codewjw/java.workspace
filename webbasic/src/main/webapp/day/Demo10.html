@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+    div {
+      height:100px;
+      width:100px;
+      border: 1px solid red;
+    }
+    #d1 {
+      padding:10px;
+      margin:20px;
+    }
+    #d2 {
+     /*上，右，下，左*/
+     padding: 10px 20px 30px 40px;
+     margin: 40px 30px 20px 10px;
+    }
+    #d3 {
+       /*设置单个边距 */
+       padding-left:30px;
+       margin-bottom:30px;
+    }
+    #d4 {
+      /*对称设置边距  */
+      /*上下 左右 */
+      padding: 20px 30px;
+      margin: 20px 30px;
+    }
+    /*对称设置外边距的特殊用法 ：
+          当左右值为auto时，元素会水平居中 */
+    #d5 {
+     margin:50px auto;
+    }
+</style>
+</head>
+<body>
+	 <div id="d1">d1</div>
+	 <div id="d2">d2</div>
+	 <div id="d3">d3</div>
+	 <div id="d4">d4</div>
+	 <div id="d5">d5</div>
+	 <div id="d6">d6</div>
+</body>
+</html>

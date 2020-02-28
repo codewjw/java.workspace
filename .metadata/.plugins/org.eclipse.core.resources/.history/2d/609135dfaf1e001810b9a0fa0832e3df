@@ -1,0 +1,10 @@
+package cn.tedu.entity;
+
+import java.io.Serializable;
+
+public class Teacher implements Serializable {
+	private static final long serialVersionUID = -7440470205952209818L;
+
+	private String id;
+	private String name;
+}

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"  
+	xmlns:jee="http://www.springframework.org/schema/jee" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+	   
+	   <bean id="foo" class="autowire.Foo"></bean>
+	   <!-- <bean id="foo1" class="autowire.Foo"></bean> -->
+	   <!-- 
+	   autowire:标识让容器自动建立对象之间的依赖关系
+	   a. byName:依据属性名查找对应的bean(就是以属性名作为bean的id来查找
+	       ，找到后调用set方法来建立依赖关系)
+	       注：如果找不到则不注入
+	    b. byType:依据属性类型来查找bean,找到之后，调用set方法来建立依赖关系
+	         注：如果找到多个则会报错，
+	          如果存在多个同类型(超类和派生类也算同类型)的bean，则不会自动注入
+	    
+	    c. constructor:与byType类似，不过，它是调用构造器来注入
+	    -->
+	   <!-- <bean id="boo" class="autowire.Boo" autowire="byName"></bean> -->
+	   <bean id="boo" class="autowire.Boo" autowire="byType"></bean>
+</beans>

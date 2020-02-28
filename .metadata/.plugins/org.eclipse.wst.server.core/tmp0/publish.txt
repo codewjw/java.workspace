@@ -1,0 +1,4 @@
+#Tomcat publish data
+#Sat Apr 07 21:14:22 CST 2018
+org.eclipse.jst.jee.server\:/binary\:F\:\\Maven\\.m2\\repository\\org\\springframework\\spring-web\\3.2.8.RELEASE\\spring-web-3.2.8.RELEASE.jar=F\:\\Program Files\\apache-tomcat-7.0.67\\wtpwebapps\\redisMybatis\\WEB-INF\\lib\\spring-web-3.2.8.RELEASE.jar
+org.eclipse.jst.jee.server\:redisMybatis=F\:\\Program Files\\apache-tomcat-7.0.67\\wtpwebapps\\redisMybatis

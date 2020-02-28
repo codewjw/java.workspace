@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<script>
+	  window.onload = function(){
+	   //可根据ID、标签名，name获取元素对象
+	   var radios = document.getElementsByName("sex");
+	   console.log(radios);
+	   //根据层次查询节点
+	   var wh = document.getElementById("wh");
+	   console.log(wh);
+	   var ul = wh.parentNode;
+	   console.log(ul);
+	   
+	   //子节点中还带文本，如回车
+	   var children = ul.childNodes;
+	   console.log(children);
+	   //查询某节点的孩子
+	   var lis = ul.getElementsByTagName("li");
+	   console.log(lis);
+	   //获取某节点的兄弟
+	   //节点.父亲.孩子们[i]
+	   var gz = wh.parentNode.getElementsByTagName("li")[1];
+	   console.log(gz);
+	  }
+	  
+	  function f1(){
+		  //创建新节点
+		  var li = document.createElement("li");
+		  //修改新节点，加入属性、内容
+		  li.innerHTML = "南京";
+		  //追加新节点
+		  var ul = document.getElementById("city");
+		  ul.appendChild(li);
+	  }
+	  function f2(){
+		  //创建节点
+		  var li = document.createElement("li");
+		  //修改节点
+		  li.innerHTML = "杭州";
+		  var ul = document.getElementById("city");
+		  var wh = document.getElementById("wh");
+		  ul.insertBefore(li,wh);
+	  }
+	  function f3(){
+		  //删除已经有的节点
+		 /*  var ul = document.getElementById("city");
+		  var wh = document.getElementById("wh");
+		  if(ul&&wh){
+			  ul.removeChild(wh);
+		  } */
+		  var wh = document.getElementById("wh");
+		 if(wh)
+			 {
+			   wh.parentNode.removeChild(wh);
+			 }
+		  
+	  }
+	</script>
+</head>
+<body>
+	<p>
+	 <input type="radio" name="sex" checked />男
+	 <input type="radio" name="sex" />女
+	</p>
+	<ul id="city">
+	 <li>深圳</li>
+	 <li>广州</li>
+	 <li id="wh">武汉</li>
+	 <li>北京</li>
+	 <li>上海</li>
+	</ul>
+	<p>
+	  <input type="button" onclick="f1()" value="增加" />
+	  <input type="button" onclick="f2()" value="插入" />
+	  <input type="button" onclick="f3()" value="删除" />
+	</p>
+</body>
+</html>

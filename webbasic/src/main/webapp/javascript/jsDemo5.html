@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+  <script>
+  function jc(){
+    var num = document.getElementById("num").value;
+    var result =document.getElementById("result");
+    var sum = 1;
+    if(!isNaN(num)){
+       var num2 = parseInt(num);
+       if(num2==0){
+         result.innerHTML = 1;
+       }
+       else if(num2<0){
+          result.innerHTML = "负数不能计算阶乘";
+       }
+       else{
+         for(var i=1;i<=num2;i++){
+            sum *= i;
+         }
+         result.innerHTML = sum;
+       }
+    }else {
+       result.innerHTML = "输入的不是一个数";
+    }
+  }
+   
+  </script>
+</head>
+<body>
+  <input type="text" id="num"/>
+  <input type="button" value="阶乘" onclick="jc()"/>
+  = <span id="result"></span>
+</body>
+</html>

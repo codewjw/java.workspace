@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+ <!-- 嵌入式：在script标签内写js,该标签可写在网页的任意位置-->
+ <script>
+   //js单行注释
+   /*js多行注释*/
+   /*
+    1.js中的函数都是共有的
+    2.js中的函数返回值不用声明
+   */
+   function fun1(){
+	   alert('你好！');
+   }
+ </script>
+ <!-- 文件调用式：在一个js独立的文件中写js，然后引入 -->
+ <!-- script不能同时引入js和书写js -->
+ <script type="text/javascript" src="myjs.js" ></script>
+</head>
+<body>
+  <!-- 事件：用户的操作(动作)，是js调用的时机 
+   如单击事件，双击事件-->
+   <!-- 事件定义式写js -->
+  <input type="button" value="按钮1" onclick="fun1()"/> 
+  <input type="button" value="按钮2" onclick="alert('苍老师！');"/> 
+  <input type="button" value="按钮3" onclick="fun3()"/> 
+</body>
+</html>

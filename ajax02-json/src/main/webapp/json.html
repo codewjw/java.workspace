@@ -1,0 +1,51 @@
+<!Doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script src="js/ajax.js"></script>
+    <script>
+      function f1(){
+    	  var obj = {
+    			  "code":"60087","name":"中国嘉陵","price":6
+    	  }
+    	  alert(obj.name);
+      }
+    function f2(){
+    	var obj = {
+    	  "company":"中国达内科技","addr":{
+    		  "city":"北京",
+    		  "street":"北三环西道",
+    		  "room":708 
+    	  }
+    	}
+    	alert(obj.addr.street);
+    }
+    //josn数组
+    function f3(){
+    	var arr = [{"name":"steven","age":22},
+    	           {"name":"tom","age":32}];
+    	alert(arr[1].name);
+    }
+    
+    //将json字符串，转换为javascript对象
+      function f4(){
+    	var str = '{"name":"hsj","age":24}';
+    	//使用javascript内置对象JSON提供的方法
+    	var obj = JSON.parse(str);
+    	alert(obj.name);
+    }
+    function f5(){
+    	var str = '[{"name":"steven","age":22},'
+         +'{"name":"tom","age":32}]';
+    	//返回由多个javascript对象组成的数组
+    	var obj = JSON.parse(str);
+    	alert(obj[0].name);
+    }
+    </script>
+  </head>
+  <body style="font-size:30px;">
+   <form action="" method="post">
+      <a href="javascript:f5();">clickMe</a>
+   </form>
+  </body>
+</html>

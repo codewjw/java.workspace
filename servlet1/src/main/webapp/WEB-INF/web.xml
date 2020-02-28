@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <display-name>servlet1</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <!-- 配置servlet-->
+  <!--1.声明servlet并给它去个别名 -->
+  <servlet>
+    <servlet-name>time</servlet-name><!-- 别名,方便文件引用 -->
+    <servlet-class>web.TimeServlet</servlet-class> <!--报名加类名 -->
+  </servlet>
+    <!--2.通过别名引用Servlet，并给它去个网名（网络访问路径） -->
+    <servlet-mapping>
+      <servlet-name>time</servlet-name> <!--别名,指代引用的类，所以要用servlet定义的别名-->
+     <!-- 网名必须以斜杠/开头 -->
+      <url-pattern>/ts</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+      <servlet-name>num</servlet-name>
+      <servlet-class>web.RandomNum</servlet-class>
+    </servlet>
+    <servlet-mapping>
+      <servlet-name>num</servlet-name>
+      <url-pattern>/ns</url-pattern>
+    </servlet-mapping>
+</web-app>

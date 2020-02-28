@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"  
+	xmlns:jee="http://www.springframework.org/schema/jee" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+	
+	<!-- 使用spring表达式读取其它bean的属性 -->
+	<bean id="ifb1" class="value.InfoBean">
+		 <!-- value="#{vb1.name}"是spring表达式，本质是调用getName()方法，所以vb1的类中
+		 必须存在getName()方法 
+		 value="#{vb1.list[0]}"获取集合中第一个元素
+		 -->
+		<property name="name" value="#{vb1.name}" />
+		<property name="interest" value="#{vb1.list[0]}" />
+		<!-- 如果含中文key，就不适合 ,换成方括号-->
+		<!-- <property name="score" value="#{vb1.map.english}" /> -->
+		<property name="score" value="#{vb1.map['english']}" />
+		<!--读bean属性的文件-->
+		<!-- <property name="pageSize" value="#{config.pageSize}" /> -->
+		<property name="pageSize" value="#{config['pageSize']}" />
+	</bean>
+	
+	 <!-- 注入基本类型的值 -->
+	 <bean id="vb1" class="value.ValueBean">
+	 <property name="name" value="关关"/>
+	 <property name="age" value="20" />
+	 <!-- 直接注入集合类型的值 -->
+	 <property name="list" >
+	 <list> 
+	  <value>看球</value>
+	  <value>钓鱼</value>
+	  <value>看电视</value>
+	  <value>看电视</value>
+	 </list>
+	 </property>
+	 <property name="city">
+	  <set>
+	    <value>北京</value>
+	    <value>上海</value>
+	    <value>武汉</value>
+	    <value>武汉</value>
+	   </set>
+	 </property>
+	 <property name="map">
+	  <map>
+	   <entry key="english" value="98"></entry>
+	   <entry key="math" value="78"></entry>
+	   <entry key="chinese" value="98"></entry>
+	  </map>
+	 </property>
+	  <property name="pt">
+	  <props>
+	   <prop key="username">jrxiaochen</prop>
+	   <prop key="passwd">chenwj1988</prop>
+	  </props>
+	 </property>
+	 </bean>
+	 
+	 <!-- 将集合类型的值配置成一个bean,util:list是命名空间别名
+	  表示使用的是util命名空间下的list元素 ,命名空间：为区分同名元素而添加的前缀-->
+	 <util:list id="listBean">
+	   <value>喝酒</value>
+	   <value>烫头</value>
+	   <value>抽烟</value>
+	 </util:list>
+	 <util:set id="setBean">
+	   <value>武汉</value>
+	   <value>孝感</value>
+	   <value>荆州</value>
+	 </util:set>
+	 <util:map id="mapBean">
+	  <entry key="english" value="99"></entry>
+	  <entry key="math" value="77"></entry>
+	  <entry key="chinese" value="98"></entry>
+	 </util:map>
+	 <util:properties id="propBean">
+	   <prop key="username">chenwj</prop>
+	   <prop key="passwd">chenwj1988</prop>
+	 </util:properties>
+	 <!-- 采用引用的方式注入集合类型的值 -->
+	 <bean id="eb1" class="value.ExampleBean">
+	 <property name="list" ref="listBean" />
+	 <property name="set" ref="setBean" />
+	 <property name="map" ref="mapBean" />
+	 <property name="pt" ref="propBean"></property>
+	 </bean>
+	
+	<!-- 读取.properties文件的内容 -->
+	<!--
+	注：location:指定文件的位置，其中classpath表示依据类路径去查找属性文件 
+	容器会读取指定位置的文件内容，将内容存放到Propertis对象里面
+	 -->
+	<util:properties id="config" location="classpath:config.properties" />
+
+	 
+</beans>

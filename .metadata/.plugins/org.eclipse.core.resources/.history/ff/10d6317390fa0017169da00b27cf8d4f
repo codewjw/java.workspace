@@ -1,0 +1,25 @@
+<!Doctype html>
+<html>
+<head>
+ <meta charset="utf-8"/>
+ <script type="text/javascript">
+ Function getXhr(){
+	 var xhr;
+	 //非ie浏览器
+	if(window.XMLHttpRequest){
+	xhr = new XMLHttpRequest();
+	}else{
+	  Xhr = new ActiveXObject(‘Microsoft.XMLHttp’);
+	}
+	return xhr;
+	}
+
+ </script>
+</head>
+<body>
+  <p>
+   <a href="javascript:alert(getXhr());">ClickMe</a>
+   <input type="button" value="测试" onclick="alert(getXhr());"/>
+  </p>
+</body>
+</html>

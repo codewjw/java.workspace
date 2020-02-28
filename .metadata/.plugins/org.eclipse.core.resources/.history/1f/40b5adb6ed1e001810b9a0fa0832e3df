@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <!--类与数据库表的映射-->
+	<class name="cn.tedu.entity.TUser" table="user">
+	<!-- 主键 -->
+	<id name="id" column="id"  type="int">
+	  <generator class="identity" /><!--说明主键是自增长  -->
+	</id>
+	<!-- 非主键列 -->
+	<property name="name" column="name" type="string"></property>
+	<!-- <list name=""></list> -->
+	<set name="books" >
+	 <key column="u_id"></key><!--通过外键关联-->
+	 <one-to-many class="cn.tedu.entity.Book"/>
+	</set>
+	</class>
+</hibernate-mapping>

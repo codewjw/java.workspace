@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.tedu.TBook" table="t_book">
+		<id name="id" column="b_id" type="int">
+			<generator class="identity" />
+		</id>
+		<property name="name" column="b_name"
+					 type="string"></property>
+		<many-to-one name="user" column="u_userid"
+						 class="cn.tedu.TUser">
+		</many-to-one>
+	</class>
+</hibernate-mapping>
+
+
+
+
+
+
+

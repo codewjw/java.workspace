@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="cn.tedu.note.dao.UserDao">
+  
+   <!--方式二  -->
+   <!-- 使用resultMap解决表的字段名与实体类的属性名不一致的情况 -->
+   <resultMap type="cn.tedu.note.entity.User" id="userResultMap">
+    <result property="userId" column="cn_user_id" />
+    <result property="userName" column="cn_user_name" />
+    <result property="userPasswd" column="cn_user_password" />
+    <result property="userToken" column="cn_user_token" />
+    <result property="userNick" column="cn_user_nick" />
+   </resultMap>
+   <!-- 加别名或自己配置resultMap -->
+   <select id="findUserByName" parameterType="String" resultMap="userResultMap">
+      SELECT cn_user_id,cn_user_name,cn_user_password,cn_user_token,cn_user_nick
+      FROM cn_user WHERE cn_user_name=#{name} 
+   </select>
+   <insert id="addUser" parameterType="cn.tedu.note.entity.User">
+    INSERT INTO cn_user(cn_user_id,cn_user_name,cn_user_password,cn_user_token,cn_user_nick)
+     VALUES(#{userId},#{userName},#{userPasswd},#{userToken},#{userNick})
+   </insert>
+   <select id="findUserById" parameterType="String" resultMap="userResultMap">
+      SELECT cn_user_id,cn_user_name,cn_user_password,cn_user_token,cn_user_nick
+      FROM cn_user WHERE cn_user_id=#{userId} 
+   </select>
+   </mapper>

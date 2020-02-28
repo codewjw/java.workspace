@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+  function f1(){
+	 console.log( confirm("您确定要删除吗？"));
+  }
+  //周期性定时器
+  function f2(){
+	  var num=5;
+	  //启动周期性定时器,没隔1000ms调用过一次匿名函数
+	  //返回的id是定时器的唯一标识
+	 var id = setInterval(function(){
+		 console.log(num--);
+		 if(num==0){
+			  clearInterval(id);
+			  console.log("duang!");
+		  }
+	  },1000);
+	  //当前方法f2相当于主线程，setInterval启动了支线程，二者并发执行，不互相等待
+	  //主线程启动支线程后立刻向下执行，支线程需要等待1秒后才执行1次
+	 console.log("BOOM!");
+  }
+  //一次性定时器
+  var id;
+  function f3(){
+	  console.log("显示广告");
+	  //启动一次性定时器，延时5秒后调用函数
+	  //调用一次后自动停止
+	  id = setTimeout(function(){
+		  console.log("自动关闭广告！");
+	  },5000);
+  }
+  function f4(){
+	  //清除定时器，在定时器没有自动停止前调用
+	  //可以调用此方法提前停止
+	  clearTimeout(id);
+  }
+</script>
+</head>
+<body>
+    <input type="button" onclick="f1()" value="删除" />
+    <input type="button" onclick="f2()" value="倒计时" />
+    <input type="button" onclick="f3()" value="广告">
+    <input type="button" onclick="f4()" value="看广告">
+</body>
+</html>

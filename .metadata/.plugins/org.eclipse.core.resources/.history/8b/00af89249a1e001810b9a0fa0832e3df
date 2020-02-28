@@ -1,0 +1,13 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+	 <!--方言，指定后台操作的数据库-->
+	 <property name="dialect">
+	   <!--指定后台操作的数据库是MySQL-->
+	   org,hibernate.dialect.MySQLDialect
+	 </property>
+	</session-factory>
+</hibernate-configuration>

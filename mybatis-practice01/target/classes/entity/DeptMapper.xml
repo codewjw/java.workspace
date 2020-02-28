@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="practice">
+  <!--id要求唯一
+  parameterType：参数类型
+  -->
+   <insert id="save" parameterType="entity.Dept">
+   <!--
+    #{name}：占位符
+       由于parameterType是Emp，
+   Emp对象中的name和age取值需要通过get方法去取，
+   #{name}占位符，依据get方法给对应问号赋值，
+       将name首字母 大写，和get组成getName()方法 
+       所以，变量名字要和get方法后面的单词（首字母小写后）一致
+   -->
+   INSERT INTO t_dept VALUES(t_dept_seq.nextval,#{deptName},#{address})
+   </insert>
+   
+   <!--resultType返回值类型
+         返回类型是List<Emp>泛型中的类型
+   -->
+   <select id="findAllDepts" resultType="entity.Dept">
+     SELECT id,deptName,address FROM t_dept
+   </select>
+   
+   <!--resultType返回值类型
+         返回类型是Emp类型
+        由于parameterType参数类型是int，所以不必用get方法取值，
+    #{id1}参数名可以随意取
+   -->
+   <select id="findDeptById" parameterType="int" resultType="entity.Dept">
+     SELECT id,deptName,address FROM t_dept WHERE id=#{id1}
+   </select>
+   
+   <update id="modifyByDept" parameterType="entity.Dept">
+      UPDATE t_dept SET deptName=#{deptName},address=#{address} WHERE id=#{id}
+   </update>
+   
+   <delete id="deleteById" parameterType="int">
+    DELETE FROM t_dept WHERE id=#{id2}
+   </delete>
+</mapper>

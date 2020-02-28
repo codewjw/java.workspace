@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <display-name>netctoss</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <servlet>
+    <servlet-name>main</servlet-name>
+    <servlet-class>web.MainServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>main</servlet-name>
+    <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+  <!--配置错误页面：当tomcat捕获到指定错误时会自动转发到对应页面-->
+  <error-page>
+    <error-code>404</error-code>
+    <!--写不带项目名的绝对路径，因为转发不能转发到别的项目，
+    tomcat会自动增加项目名上去，你写上项目名字，就多加了一层-->
+    <location>/WEB-INF/error.jsp</location>
+  </error-page>
+  <error-page>
+    <error-code>500</error-code>
+    <!-- 写不带项目名的绝对路径，因为转发不能转发到别的项目，
+    tomcat会自动增加项目名上去，你写上项目名字，就多加了一层 -->
+    <location>/WEB-INF/error.jsp</location>
+  </error-page>
+  
+  <!-- 配置自定义过滤器 -->
+  <filter>
+    <filter-name>loginFilter</filter-name>
+    <filter-class>web.LoginFilterServlet</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>loginFilter</filter-name>
+    <!-- 先过滤所有.do结尾的请求-->
+    <url-pattern>*.do</url-pattern>
+  </filter-mapping>
+</web-app>

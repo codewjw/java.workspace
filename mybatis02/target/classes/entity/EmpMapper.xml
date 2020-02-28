@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="dao.EmpDAO">
+  <!--id要求唯一
+  parameterType：参数类型
+  -->
+   <insert id="save" parameterType="entity.Emp">
+   <!--
+    #{name}：占位符
+       由于parameterType是Emp，
+   Emp对象中的name和age取值需要通过get方法去取，
+   #{name}占位符，依据get方法给对应问号赋值，
+       将name首字母 大写，和get组成getName()方法 
+       所以，变量名字要和get方法后面的单词（首字母小写后）一致
+   -->
+   INSERT INTO t_emp VALUES(t_emp_seq.nextval,#{name},#{age})
+   </insert>
+   
+   <!--resultType返回值类型
+         返回类型是List<Emp>泛型中的类型
+   -->
+   <select id="findAllEmps" resultType="entity.Emp">
+     SELECT id,name,age FROM t_emp
+   </select>
+   
+   <!--resultType返回值类型
+         返回类型是Emp类型
+        由于parameterType参数类型是int，所以不必用get方法取值，
+    #{id1}参数名可以随意取
+   -->
+   <select id="findEmpById" parameterType="int" resultType="entity.Emp">
+     SELECT id,name,age FROM t_emp WHERE id=#{id1}
+   </select>
+   
+   <update id="modifyByEmp" parameterType="entity.Emp">
+      UPDATE t_emp SET name=#{name},age=#{age} WHERE id=#{id}
+   </update>
+   
+   <delete id="deleteById" parameterType="int">
+    DELETE FROM t_emp WHERE id=#{id2}
+   </delete>
+   
+   <!-- 返回Map类型的结果  -->
+   <!--  resultType="map"中的map为 java.util.Map简写形式，指的是返回值类型为Map-->
+   <select id="findEmpById2" parameterType="int" resultType="map"> 
+     SELECT id,name,age FROM t_emp WHERE id=#{id3}
+   </select>
+   
+   <!-- 使用resultMap解决字段名与实体类的属性名不一致的情况 ：方式一-->
+ <!--   <select id="findEmpById3" parameterType="int" resultType="entity.Employee">
+      SELECT id empNo,name empName,age FROM t_emp WHERE id=#{id4} 
+   </select> -->
+   
+   <!--方式二  -->
+   <!-- 使用resultMap解决表的字段名与实体类的属性名不一致的情况 -->
+   <resultMap type="entity.Employee" id="empResultMap">
+    <result property="empNo" column="id" />
+    <result property="empName" column="name" />
+    <!-- 列出不一样的即可 -->
+    <!-- <result property="age"  column="age" /> -->
+   </resultMap>
+   <select id="findEmpById3" parameterType="int" resultMap="empResultMap">
+      SELECT id,name ,age FROM t_emp WHERE id=#{id4} 
+   </select>
+   
+   </mapper>

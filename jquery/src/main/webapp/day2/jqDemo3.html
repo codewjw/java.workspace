@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>动态绑定事件</title>
+<style>
+   .big {
+     width:250px;
+     height:250px;
+   }
+   .hid {
+     display:none;
+   }
+</style>
+<script src="../js/jquery-1.11.1.js" ></script>
+
+<script>
+   //window.onload只能写一次，若写了多次则后者覆盖前者
+   //$(function(){})可以写多次，若写了多次则它们的逻辑会叠加
+   $(function(){
+	  //给按钮绑定单击事件
+	  //$(":button:first").bind("click",fun1);
+	  //$(":button:first").click(fun1);
+	  //动态绑定发事件，浏览器会自动将事件对象传给绑定的函数，函数只需要接收就好
+	  $(":button:first").click(function(e){
+		  console.log(1);
+		  console.log(e);
+	  });
+	  //给图片绑定悬停事件，合成事件，将多个事件合并在一起
+	  $("img").hover(
+			  function(){
+		  $(this).addClass("big");
+	  },//悬停时
+	  function(){
+		  $(this).removeClass("big");
+	  });//离开时
+	  //绑定切换操作的单击事件
+	  $(":button:eq(1)").click(function(){
+		  //让图片在影藏和显示之间切换
+		  $("img").toggle();
+	  });
+   });
+   function fun1(){
+	   console.log(1);
+   }
+</script>
+</head>
+<body>
+  <input type="button" value="绑定" />
+  <p>
+    <img src="../images/01.jpg" />
+  </p>
+  <input type="button" value="切换" />
+</body>
+</html>

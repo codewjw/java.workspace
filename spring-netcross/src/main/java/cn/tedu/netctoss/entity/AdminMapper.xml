@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+ 
+<!--此处命名空间的名字可以不用于映射文件的名字一致，方式二没有用映射方式处理-->
+<mapper namespace="cn.tedu.netctoss.dao.AdminDao">
+
+    <!-- 使用resultMap解决表的字段名与实体类的属性名不一致的情况 -->
+   <resultMap type="cn.tedu.netctoss.entity.Admin" id="adminResultMap">
+    <result property="adminId" column="admin_id" />
+    <result property="adminCode" column="admin_code" />
+     <!-- 列出不一样的即可 -->
+   <!--  <result property="password" column="password" />
+    <result property="name" column="name" />
+    <result property="telephone" column="telephone" />
+    <result property="email" column="email" />
+    <result property="enrolldate" column="enrolldate" /> -->
+   </resultMap>
+   
+   <!--resultType返回值类型
+         返回类型是List<Emp>泛型中的类型
+   -->
+   <select id="findAllAdmins" resultMap="adminResultMap">
+     SELECT admin_id,admin_code,password,name,telephone,email,enrolldate
+     FROM admin_info
+   </select>
+   <select id="findAdminByCode" parameterType="String" resultMap="adminResultMap">
+    SELECT admin_id,admin_code,password,name,telephone,email,enrolldate
+     FROM admin_info WHERE admin_code=#{adminCode}
+   </select>
+   
+   
+   
+   </mapper>

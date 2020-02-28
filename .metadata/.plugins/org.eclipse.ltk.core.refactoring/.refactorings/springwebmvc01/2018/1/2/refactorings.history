@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;springwebmvc01/src/main/resources/ioc.xml&apos; to &apos;spring-mvc.xml&apos;" description="Rename resource &apos;ioc.xml&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/main/resources/ioc.xml" name="spring-mvc.xml" stamp="1515732768718" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;springwebmvc01/src/main/webapp/WEB-INF/Hello.jsp&apos; to &apos;hello.jsp&apos;" description="Rename resource &apos;Hello.jsp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/main/webapp/WEB-INF/Hello.jsp" name="hello.jsp" stamp="1515737881545" updateReferences="true"/>
+</session>

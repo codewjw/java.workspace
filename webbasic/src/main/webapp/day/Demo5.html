@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<!--用来圈顶定数据的范围，
+在此范围内的数据才能提交给服务器  -->
+<form action="http://www.baidu.com">
+<!-- 表单控件 ：用来给用户输入数据的框-->
+<!--1 input标签，有9个  -->
+   <!--value设置默认值
+    maxlength 这只输入的最大长度
+    readonly 设置只读属性  -->
+   <p>
+      用户名:
+   <input type="text" value="terana" maxlength="15" readonly />
+   </p>
+   <p>
+       密&nbsp;&nbsp;&nbsp;码:
+       <input type="password">
+   </p>
+   <!-- 单选框 
+   name指定组别，同一组会互斥
+   checked 设置选中项
+   value：设置条项的值-->
+   <p>
+        性别
+   <input type="radio" value="男" name="gender" />男
+   <input type="radio" value="女" name="gender" checked />女
+   </p>
+   <!--复选框  
+    checked 设置选中项
+    name:
+    value:提交给后台时的值，选中谁，提交谁的值-->
+   <p>
+          兴趣:
+        <input type="checkbox" checked name="interest"/>足球
+        <input type="checkbox" name="interest" />篮球
+        <input type="checkbox" name="interest" />养生
+        <input type="checkbox" name="interest" />美食
+        <input type="checkbox" checked  name="interest" />阅读
+        <input type="checkbox" checked name="interest" />写作
+        <input type="checkbox" />诗词
+   </p>
+   <!-- 隐藏框 -->
+   <p>
+                影藏的真相
+      <input type="hidden" value="真相"/>
+   </p>
+   <!--文件框-->
+   <p> 
+	       头像:
+	   <input type="file" /> 
+   </p>
+   <!-- 按钮-->
+   <p>
+     <input type="submit" value="提交" />
+     <input type="reset" value="重置" />
+     <input type="button" value="保存">
+   </p>
+   <!--2 其他标签，有3个 -->
+   <!--label 管理框的说明文字，可将框与字一起绑定，增加框的面积
+     id:元素(控件)的唯一标识,任何元素都有id-->
+   <p>
+      <input type="checkbox" id="check1"/>
+      <label for="check1">我已阅读并自愿遵守此协议</label>
+   </p>
+   <!--下拉选
+   selected：设置选中项
+   value:选中时的值-->
+   <select id="城市">
+      <option option="0">请选择</option>
+      <option value="1">北京</option>
+      <option value="2">上海</option>
+      <option value="3">武汉</option>
+      <option value="4" selected>南京</option>
+      <option value="5">杭州</option>
+   </select>
+   <!-- 文本域 
+    cols：指定文本域的列数
+    rows：指定文本域的行数
+          双标签中的文本是文本域的默认值
+    readonly：只读-->
+   <p>
+   <textarea cols="30" rows="5">回家时打开就开始就看见的撒谎的环境阿金萨的
+   聚光科技卡卡说了都快到拉萨康拉德思考卡机扣篮大赛科拉的看了深刻了解打开了空间卡记录速度快打算开了
+   看监控哈德森卡戴珊快乐健康拉动数据库</textarea>
+   </p>
+  </form>
+
+
+</body>
+</html>

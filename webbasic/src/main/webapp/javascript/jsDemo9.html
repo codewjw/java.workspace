@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+   function sum(){
+	   var sum = 0;
+	   if(arguments.length>0){
+		   for(var k=0;k<arguments.length;k++){
+			   sum += arguments[k];
+		   }
+	   }
+	   return sum;
+   }
+   //页面加载时，直接调用sum函数
+   console.log(sum());
+   console.log(sum(1,2));
+   console.log(sum(1,2,3,4));
+   
+   function cal(){
+	   var str = document.getElementById("calcu").value;
+	   try{
+	   var result = eval(str);
+	   document.getElementById("result").innerHTML = result;
+     }catch(ex){
+    	 document.getElementById("result").innerHTML = "Error";
+     }
+   }
+</script>
+</head>
+<body>
+  <p>函数参数原理的演示</p>
+  <input type="text" id="calcu" />
+  <input type="button" onclick="cal()" value="=">
+  <span id="result"></span>
+</body>
+</html>

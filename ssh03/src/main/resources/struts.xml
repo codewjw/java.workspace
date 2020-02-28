@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd"><!--声明决定xml文件可使用哪些标签-->
+<struts>
+  <!-- 配置主控制器 -->
+  <package name="demo" namespace="/demo" extends="struts-default">
+    <!-- 注册拦截器-->
+    <interceptors>
+    <!--  <interceptor name="demo" class="cn.tedu.DemoInterceptor"> -->
+    <interceptor name="demo" class="demoInterceptor">
+     </interceptor>
+    </interceptors>
+     <!-- 由于配置了spring扫描器，struts2配置Action的处理类的时候，不必再带包的全名 
+            注意：class="helloAction"此处要类名首字母要小写,当Bean用-->
+    <action name="hello" class="helloAction" method="doHello">
+    <!-- 不指定方法名，默认execute,execute方法返回success的时候转发到-->
+     <result name="success">
+       /WEB-INF/msg.jsp
+     </result>
+     <!--  type指定reslut类型，默认dispatcher-->
+     <result name="error" type="redirectAction">
+        hello
+     </result>
+     <!-- <result name="error" type="redirectAction">
+       <param name="namespace">
+        /test
+       </param>
+       <param name="actionName">
+        login
+       </param>
+     </result> -->
+     <!-- 引用拦截器 -->
+     <interceptor-ref name="demo" />
+    </action>
+  </package>
+  
+  <package name="result" namespace="/result" extends="struts-default">
+	  <action name="hello" class="helloAction" method="doHello">
+	    <result name="success">
+	      /WEB-INF/msg.jsp
+	    </result>
+	  </action>
+	  <action name="test1">
+	    <result type="redirectAction">
+	     hello
+	    </result>
+	  </action>
+	  <action name="test2">
+	   <result type="redirectAction">
+	    <param name="namespace">
+	     /demo
+	    </param>
+	    <param name="actionName">
+	     hello
+	    </param>
+	  </result>
+	  </action>
+	  <action name="test3">
+	  <result type="redirect">
+	   http://localhost:8081/ssh03/demo/hello.action
+	  </result>
+	  </action>
+	  <action name="test4">
+	  <result type="redirect">
+	    <param name="location">
+	     http://localhost:8081/ssh03/demo/hello.action
+	    </param>
+	  </result>
+	  </action>
+  
+	 <action name="sw" class="switchAction" method="doSwitch">
+	   <result name="1" type="dispatcher">
+	    /WEB-INF/msg.jsp
+	   </result>
+	   <result name="2" type="redirectAction">
+	     <param name="namespace">/demo</param>
+	     <param name="actionName">hello</param>
+	   </result>
+	   <result name="3" type="redirect">
+	     http://www.baidu.com
+	   </result>
+	   <result name="4" type="redirectAction">hello</result>
+	  </action>
+	  
+	  <action name="image" class="imageAction" method="doImage">
+	   <result name="success" type="stream">
+	    <param name="contentType">image/png</param>
+	    <param name="inputName">image</param>
+	    <param name="contentDisposition">attachment;filename="hello.png"</param>
+	   </result>
+	  </action>
+  </package>
+  <package name="json" namespace="/json" extends="json-default">
+    <action name="json" class="jsonAction">
+    <!--发用Action中全部属性-->
+     <result name="success" type="json"></result>
+    </action>
+    <action name="json2" class="jsonAction" method="doJson">
+      <!-- 发送指定的某个属性 -->
+      <result name="success" type="json">
+       <param name="root">
+        age
+       </param>
+      </result>
+    </action>
+  </package>
+</struts>

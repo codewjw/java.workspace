@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+  <style>
+      div {
+        width:800px;
+        height:600px;
+        background-color:#066;
+        margin:10px auto;
+        position:relative;
+      }
+      #m1 {
+         position:absolute;
+         left:100px;
+         top:100px;
+      }
+      #m2 {
+         position:absolute;
+         left:300px;
+         top:50px;
+      }
+      #m3 {
+         position:absolute;
+         left:230px;
+         top:250px;
+      }
+      /* 调整元素的堆叠顺序 ,越大，元素越靠上，越小，越靠下*/
+      img:hover{
+         z-index:999;
+      }
+  </style>
+  
+</head>
+<body>
+  <div>
+    <img src="../images/1.jpg" id="m1" />
+    <img src="../images/2.jpg" id="m2" />
+    <img src="../images/3.jpg" id="m3" />
+  </div>
+</body>
+</html>

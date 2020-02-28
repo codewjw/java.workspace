@@ -1,0 +1,22 @@
+package cn.tedu.test;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+import org.junit.Before;
+
+public class UserTest {
+    
+	Configuration cfg;
+	
+	@Before
+	public void beforeTest(){
+		cfg = new Configuration();
+		//读取主配置文件
+		cfg.configure("hibernate.cfg.xml");
+		//获取session对象
+		SessionFactory factory = cfg.buildSessionFactory();
+		Session session = factory.openSession();
+		//通过session操作数据库
+	}
+}

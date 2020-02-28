@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <!--类与数据库表的映射-->
+	<class name="cn.tedu.entity.TBook" table="book">
+	  <id name="bid" column="b_id" type="int">
+	    <generator class="identity"></generator>
+	  </id>
+	  <property name="bname" column="b_name" type="string"></property>
+	  <!-- 多对一的关联关系 -->
+	  <many-to-one name="tuser" column="u_id"></many-to-one>
+	</class>
+</hibernate-mapping>

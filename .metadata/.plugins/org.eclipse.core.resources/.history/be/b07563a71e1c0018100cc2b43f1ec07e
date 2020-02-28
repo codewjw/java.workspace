@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+  <h1>Ajax文件上载</h1>
+  <input  type="file" if="file1" /><br/>
+  <input  type="file" if="file2" /><br/>
+  <input type="button" id="upload" value="上载"/>
+  <div id="result"></div>
+</body>
+</html>

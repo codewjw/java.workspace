@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script> 
+  /*日期*/
+   var d1 = new Date();
+   var d2 = new Date("2017/12/30 11:11:11");
+   console.log(d1);
+   console.log(d2);
+   /* 将日期转为本地时间格式字符串 */
+   console.log(d1.toLocaleDateString());
+   console.log(d1.toLocaleTimeString());
+  /* 读取时间分量 */
+  var y1 = d1.getFullYear();
+  var y2 = d1.getMonth()+1;
+  var y3 = d1.getDate();
+  var y4 =d2.getDay(); //获取星期的天
+  var today = y1+"-"+y2+"-"+y3;
+  console.log(today);
+  console.log(y4);
+  
+  /* 正则表达式 */
+  var  str = "you can you up,no can no bb......";
+  var  reg = /no/;
+  /*test方法*/
+  if(reg.test(str)){
+	  console.log("匹配");
+  }
+  var reg2 = new RegExp("no");
+  if(reg2.test(str)){
+	  console.log("匹配2");
+  }
+  /* exec */
+  /* 1.普通模式 ：exec方法从str中找出与reg相匹配的第一个子串 */
+  console.log(reg.exec(str));
+  /* 2.全局模式 :第N次调用则从str中找出和reg匹配的第N个子串*/
+  reg = /no/g;
+  console.log(reg.exec(str));
+  console.log(reg.exec(str));
+  console.log(reg.exec(str));
+  console.log(reg.exec(str));
+  
+  var reg3 = new RegExp("no","i");
+  console.log(reg3.test(str));
+</script>
+</head>
+<body>
+  <p>Math方法，Date对象，正则表达式</p>
+</body>
+</html>

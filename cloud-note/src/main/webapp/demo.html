@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+  <h1>自定义图片</h1>
+  <!-- servlet处理图片请求 -->
+  <img alt="" src="demoing" />
+  <!-- springMVC处理图片请求 -->
+  <h1>自定义图片</h1>
+  <img alt="" src="user/image.do" />
+  <h1>下载图片</h1>
+  <a href="user/getImg.do">图片</a>
+  <h1>下载excel</h1>
+  <a href="user/execl.do">Excel</a>
+  
+  <h2>文件上载</h2>
+  <Form ENCTYPE="multipart/form-data" ACTION="user/updaload.do" METHOD=POST>
+   File to process: <br/>
+   <input name="userfile1" type="file" />
+   <input name="userfile2" type="file" />
+   <input type="submit" value="上传">
+  </Form>
+</body>
+</html>

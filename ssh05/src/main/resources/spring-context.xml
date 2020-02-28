@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+    <!-- 组件扫描 -->
+	<context:component-scan base-package="cn.tedu" />
+	
+	<!--数据库的配置信息-->
+	<!-- 配置连接池 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+	  <property name="driverClass" value="com.mysql.jdbc.Driver" />
+	  <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/test" />
+	  <property name="user" value="root" />
+	  <property name="password" value="123456" />
+	  <property name="maxPoolSize" value="10" />
+	</bean>
+	
+	<!--配置SessionFactory -->
+	<bean id="sessionFactory" 
+	class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+	  <!--连接数据库-->
+	  <property name="dataSource" ref="dataSource"></property>
+	  <!--配置hibernate相关参数  -->
+	  <property name="hibernateProperties">
+	    <props>
+	      <prop key="hibernate.dialect">
+	       org.hibernate.dialect.MySQLDialect
+	      </prop>
+	      <prop key="hibernate.show_sql">true</prop>
+	      <prop key="hibernate.format_sql">true</prop>
+	    </props>
+	  </property>
+	  <!-- 配置映射文件列表 -->
+	  <property name="mappingLocations">
+	    <list>
+	      <value>classpath:User.hbm.xml</value>
+	    </list>
+	  </property>
+	</bean>
+	
+	<!-- 配置事务管理 -->
+	<bean id="txManager"
+	  class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+	   <!--引用sessionFactory-->
+	  <property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- 打开事务管理注解驱动 -->
+	<tx:annotation-driven transaction-manager="txManager"/>
+	<!-- 配置hibernateTemplate 封装了CRUD的方法-->
+	<bean id="hibernateTemplate" 
+	class="org.springframework.orm.hibernate3.HibernateTemplate">
+	  <!--引用sessionFactory-->
+	  <property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+</beans>
+
+
+
+

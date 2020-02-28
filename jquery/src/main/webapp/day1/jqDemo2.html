@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-1.11.1.js"></script>
+ <script>
+   function prt(){
+	   console.log($("p"));
+	   for(var i=0;i<$("p").length;i++){
+		   console.log($("p")[i].innerHTML);
+	   }
+   }
+  
+   function trans(e){
+	   //冒泡机制
+	  var obj = e.strElement||e.target;
+	  if(obj.nodeName=="IMG"){
+		  //将DOM对象转为jquery对象
+		  if($(obj).width()==218){
+			  $(obj).width(250).height(250);
+		  }else{
+			  $(obj).width(218).height(218);
+		  }
+		  
+	  }
+   }
+ </script>
+</head>
+<body>
+     <input type="button" value="打印" onclick="prt();">
+    <p>
+       1.jquery对象本质就是对dom对象数组的封装
+    </p>
+     <p>
+      2.jquery对象包含很多操作的dom数组的API
+    </p>
+    <p>
+      3.只有jquery对象能调用jquery的API
+    </p>
+    <div onclick = "trans(event);">
+      <img src="../images/01.jpg" />
+      <img src="../images/02.jpg" />
+      <img src="../images/03.jpg" />
+    </div>
+</body>
+</html>

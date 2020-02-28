@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style> 
+   .ok {
+      color:green;
+   }
+   .error {
+     color:red;
+   }
+</style>
+
+ <script>
+    function ckusername(){
+	    /* 验证账号格式 */
+	    var regu = /^[a-z_A-Z][a-zA-Z_0-9]{5,14}$/;
+	    var uname = document.getElementById("userName").value;
+	    if(!regu.test(uname)){
+	       document.getElementById("name").className = "error";
+	       return false;
+	    }else{
+	        document.getElementById("name").className = "ok";
+	        return true;
+	    }
+	   
+    }
+    function ckpasswd(){
+    	  var regp = /^[a-z_A-Z0-9]{6,20}$/;
+    	  var pwd = document.getElementById("passwd").value;
+    	  if(!regp.test(pwd)){
+    		  document.getElementById("psd").className = "error";
+    		  return false;
+    	  }else{
+    		       document.getElementById("psd").className = "ok";
+    		       return true;
+    	  }
+    }
+    
+    function ck(){
+    	 /* 验证账号格式 */
+	    var regu = /^[a-z_A-Z][a-zA-Z_0-9]{5,14}$/;
+	    var uname = document.getElementById("userName").value;
+	    var regp = /^[a-z_A-Z0-9]{6,20}$/;
+  	    var pwd = document.getElementById("passwd").value;
+	    if(!regu.test(uname)||!regp.test(pwd)){
+	       return false;
+	    }else {
+	    	return true;
+	    }
+	   
+    }
+  
+ </script>
+
+</head>
+<body>
+<!--  <form action="www.baidu.com" onsubmit="return ck();"> -->
+ <form action="www.baidu.com" onsubmit="return ckusername()&&ckpasswd();">
+ <p>
+        账号:<input type="text" id="userName" onblur="ckusername()" /> 
+        <span id="name">6-15位字母、数字、下划线组成</span>
+ </p>
+ <p>
+        密码:<input type="text" id="passwd" onblur="ckpasswd()" /> 
+     <span id="psd" >6-20位字母、数字、下划线组成</span>
+ </p>
+   <input type="submit"  value="登录"/>
+   </form>
+</body>
+</html>

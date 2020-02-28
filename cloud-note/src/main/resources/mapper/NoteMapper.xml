@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="cn.tedu.note.dao.NoteDao">
+  
+ <!-- 使用resultMap解决表的字段名与实体类的属性名不一致的情况 -->
+   <resultMap type="cn.tedu.note.entity.Note" id="noteResultMap">
+    <result property="noteId" column="cn_note_id" />
+    <result property="notebookId" column="cn_notebook_id" />
+    <result property="userId" column="cn_user_id" />
+    <result property="noteStatusId" column="cn_note_status_id" />
+    <result property="noteTypeId" column="cn_note_type_id" />
+    <result property="noteTitle" column="cn_note_title" />
+    <result property="noteBody" column="cn_note_body" />
+    <result property="noteCreateTime" column="cn_note_create_time" />
+    <result property="noteLastModifyTime" column="cn_note_last_modify_time" />
+   </resultMap>
+   <!-- 加别名或自己配置resultMap -->
+   <!-- resultType="map"中map相当于java.util.Map -->
+   <select id="findNotesByNotebookId" parameterType="String" resultType="map">
+      SELECT cn_note_id,cn_note_title as title
+      FROM cn_note WHERE cn_notebook_id=#{notebookId}  
+      AND cn_note_status_id="1"
+      ORDER BY cn_note_last_modify_time desc
+   </select>
+   
+   <select id="findNotesByNotebookId2" parameterType="String" resultType="map">
+      SELECT cn_note_id,cn_note_title as title
+      FROM cn_note WHERE cn_notebook_id=#{notebookId}  
+      AND cn_note_status_id="0"
+      ORDER BY cn_note_last_modify_time desc
+   </select>
+   
+   
+   <select id="findNoteById" parameterType="String" resultMap="noteResultMap">
+      SELECT cn_note_id,cn_notebook_id,cn_user_id,cn_note_status_id,
+      cn_note_type_id,cn_note_title,cn_note_body,cn_note_create_time,
+      cn_note_last_modify_time
+      FROM cn_note WHERE cn_note_id=#{noteId}  
+   </select>
+   
+   <select id="findNotes" resultType="map">
+    SELECT cn_note_id,cn_note_title as title
+      FROM cn_note 
+      <where>
+      <!-- 去除多余的前缀或后缀符号或单词
+                 后缀：suffixOverrides="and"，
+                前缀：prefixOverrides="and"-->
+      <trim suffixOverrides="and" >
+       <if test="notebookId!=null"> 
+          cn_notebook_id=#{notebookId}  AND
+       </if>
+        <if test="noteId!=null"> 
+          cn_note_id=#{noteId}  AND
+       </if>
+       <if test="statusId !=null">
+        cn_note_status_id=#{statusId} 
+       </if>
+      </trim>   
+      </where>
+      ORDER BY cn_note_last_modify_time desc
+   </select>
+   
+   <insert id="addNote" parameterType="cn.tedu.note.entity.Note" >
+      INSERT INTO cn_note(cn_note_id,cn_notebook_id,cn_user_id,cn_note_status_id,
+      cn_note_type_id,cn_note_title,cn_note_body,cn_note_create_time,
+      cn_note_last_modify_time) VALUES(#{noteId},#{notebookId},#{userId},
+      #{noteStatusId},#{noteTypeId},#{noteTitle},#{noteBody},#{noteCreateTime},
+      #{noteLastModifyTime})
+   </insert>
+   
+   <update id="updateNote" parameterType="cn.tedu.note.entity.Note">
+       UPDATE cn_note 
+       <set>
+	        <trim suffixOverrides=",">
+		        <if test="notebookId!=null">
+		          cn_notebook_id=#{notebookId},
+		       </if>
+		       <if test="userId!=null">
+		         cn_user_id=#{userId},
+		       </if>
+		        <if test="noteStatusId!=null">
+		          cn_note_status_id=#{noteStatusId},
+		       </if>
+		       <if test="noteTypeId!=null">
+		         cn_note_type_id=#{noteTypeId},
+		       </if>
+		        <if test="noteTitle!=null">
+		          cn_note_title=#{noteTitle},
+		       </if>
+		       <if test="noteBody!=null">
+		         cn_note_body=#{noteBody},
+		       </if>
+		        <if test="noteCreateTime!=null">
+		          cn_note_create_time=#{noteCreateTime},
+		       </if>
+		       <if test="noteLastModifyTime!=null">
+		        cn_note_last_modify_time=#{noteLastModifyTime},
+		       </if>
+	       </trim>
+       </set>
+       WHERE cn_note_id = #{noteId}
+   </update>
+   
+   <delete id="deleteNote" parameterType="String">
+     DELETE FROM cn_note WHERE cn_note_id = #{noteId} 
+   </delete>
+   
+   <delete id="deleteNotes">
+    DELETE FROM cn_note 
+    WHERE
+     cn_note_id in
+     <foreach collection="ids" 
+     item="id"
+     open="(" separator="," close=")">
+     #{id}
+     </foreach>
+   </delete>
+   </mapper>

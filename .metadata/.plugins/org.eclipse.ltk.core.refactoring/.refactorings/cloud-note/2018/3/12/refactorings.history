@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 2 elements to &apos;scripts&apos;&#x0D;&#x0A;- Original project: &apos;cloud-note&apos;&#x0D;&#x0A;- Destination element: &apos;scripts&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     jquery.min.js&#x0D;&#x0A;     jquery.nicescroll.min.js" description="Copy files" element1="src/main/webapp/scripts/jquery.min.js" element2="src/main/webapp/scripts/jquery.nicescroll.min.js" files="2" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1521615563319" target="/poetry/src/main/webapp/scripts" units="0" version="1.0"/>
+</session>

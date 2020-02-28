@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+ <script>
+   var n=3.154754;
+   console.log(n.toFixed(3));
+   
+   //Array对象
+   //3.1如何创建数组
+   //理解：js中的数组都是Object数组
+   //1）已知数据
+   var a1 = ["zhangsan",25,false];
+   console.log(a1[0]);
+   //未知数据
+   var a2 = new Array();
+   a2.push("lisi");
+   a2.push(28);
+   a2.push(true);
+   console.log(a2[0]);
+   //结论：js中任何数方式创建出来的数组本质是一样的
+   var a3 = [2,3,45,7,4,8,19,0,11];
+   a3.reverse();
+   console.log(a3);
+   a3.sort();
+   console.log(a3);
+   
+   /*重覆盖比较方法进行比较排序*/
+  /*  a3.sort(compare);
+   console.log(a3);
+   function compare(a,b){
+	   return a-b;
+   } */
+   /*匿名函数*/
+   a3.sort(function(a,b){return a-b;});
+   console.log(a3);
+ </script>
+</head>
+<body>
+  <p>演示数组</p>
+</body>
+</html>

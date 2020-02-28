@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd"><!--声明决定xml文件可使用哪些标签-->
+<struts>
+  <!-- <package name="" namespace="/demo" extends="struts-default">
+   namespace="" 匹配请求路径 
+   extends="struts-default" 继承默认struts-default.xml文件，以利用默认功能
+    <action name="hello" class="">
+     name="" 匹配具体的请求  class="" 指定请求的处理类
+	  <result name="">
+	    返回请求的处理结果
+	   </result>
+    </action>
+  </package> -->
+  <package name="demo" namespace="/demo" extends="struts-default">
+  <action name="hello" class="cn.tedu.HelloAction" 
+  method="doHello">
+   <result name="success">
+    /WEB-INF/msg.jsp
+   </result>
+  </action>
+  </package>
+  <package name="mesasge" namespace="/message" extends="struts-default">
+     <!-- 注册拦截器 -->
+      <interceptors>
+       <!-- 自定义拦截器 -->
+       <interceptor name="msg" class="cn.tedu.DemoInterceptor">
+       </interceptor>
+       <!-- 注册自定义拦截器栈 -->
+       <interceptor-stack name="myStack">
+         <!-- 引入自定义拦截器 -->
+         <interceptor-ref name="msg" />
+        <interceptor-ref name="defaultStack" />
+       </interceptor-stack>
+      </interceptors>
+	  <action name="loginForm">
+	   <result>/WEB-INF/login.jsp</result>
+	  </action>
+	  <action name="login" class="cn.tedu.LoginAction" method="doLogin">
+	   <result name="success">
+	    /WEB-INF/msg.jsp
+	   </result>
+	   <!-- 引用拦截器 /引用自定义拦截器栈-->
+	   <!-- <interceptor-ref name="msg" /> -->
+	   <interceptor-ref name="myStack" />
+	  </action>
+  </package>
+  <package name="user" namespace="/user" extends="struts-default">
+  <action name="loginForm">
+   <result>/WEB-INF/regiest.jsp</result>
+  </action>
+  <action name="regiest" class="cn.tedu.UserRegiestAction" method="doRegiest">
+    <result name="success">
+    /WEB-INF/msg.jsp
+    </result>
+  </action>
+  </package>
+  <package name="login" namespace="/login" extends="struts-default">
+   <action name="loginForm">
+    <result>/WEB-INF/loginForm.jsp</result>
+   </action>
+   <action name="login2" class="cn.tedu.Login2Action" method="doLogin2">
+	   <result name="success">/WEB-INF/ok.jsp</result>
+	   <result name="error">/WEB-INF/loginForm.jsp</result>
+   </action>
+  </package>
+</struts>

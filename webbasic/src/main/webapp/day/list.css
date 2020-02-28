@@ -1,0 +1,230 @@
+/*1.给元素设置统一的一些样式 */
+/* *是通用选择器，能选中一切元素*/
+* {
+    padding:0;
+    margin:0;
+}
+
+/*2 给网页分区，并设置每个区域的尺寸*/
+div {
+	 border :1px solid red; 
+	 margin :0px auto;
+}
+.logo {
+	width:960px;
+	height:61px;
+}
+.menu {
+	height:91px;
+}
+.core {
+	height:410px;
+    /*预留渐变条的区域*/
+	padding-top:10px;
+}
+.right {
+	width:960px;
+	height:50px;
+}
+.content {
+	width:950px;
+	height:390px;
+	border:5px solid #8ac1db;
+}
+.content>div {
+	width:910px;
+    height:40px;
+}
+.content>.data {
+	height:310px;
+}
+/*3 设置背景色*/
+body {
+	background-color:blue;
+}
+.logo {
+	background-image:url(../img/top_bg.png);
+}
+.menu {
+	background-color:#0488BB;
+}
+.content{
+	background-color:#e8f3f8;
+	/*为了给子元素绝对定位加上position*/
+	position:relative;
+}
+.core {
+	background:url(../img/content_bg.png) repeat-x top;
+}
+/* 设置文本样式  */
+body {
+	font-family:"微软雅黑" "文泉驿正黑" "黑体";
+	font-size:14px;
+}
+.logo {
+	text-align:right;
+	line-height:61px;
+}
+.logo>a {
+	margin-right:40px;
+	color:#FFF;
+	text-decoration:none;
+}
+.logo>a:hover {
+	font-weight:bold;
+}
+.right>p {
+	text-align:center;
+	color:#FFF;
+	height:25px;
+	line-height:40px;
+}
+.btn {
+	text-align:right;
+	line-height:40px;
+}
+.btnc {
+   margin-right:40px;
+}
+
+/* 4 设置表格样式*/
+.data>table {
+	border: 1px solid gray;
+	/* 边框合并必须写在table上 */
+	border-collapse:collapse;
+	width:96%;
+	margin-left:17px;
+	margin-right:17px;
+	
+}
+.data td{
+	border: 1px solid gray;
+	text-align:center;
+}
+.data>table thead tr {
+	height:40px;
+	background-color:#fbedce;
+	font-weight:bold;
+}
+.data>table tbody tr {
+	height:32px;
+	background-color:#FFF;
+}
+.data>table tbody tr:hover {
+	background-color:#F7F9FD;
+}
+.update {
+	padding-left:15px;
+	background:url(../img/modification.png) no-repeat left;
+	border : 0;
+}
+.delete {
+	padding-left:15px;
+	background:url(../img/delete.png) no-repeat left;
+	border:0;
+}
+/* 5.定位logo图片以及消息提示 */
+.logo>img {
+	float:left;
+}
+.content>.msg  {
+	 width:400px;
+	 height:60px;
+	 position:absolute;
+	 left: 250px;
+	 top: 100px;
+}
+.msg>img {
+	float:right;
+	margin:5px;
+	/*将鼠标变手型*/
+	cursor:pointer;
+}
+.msg>p {
+	line-height:60px;
+	margin-left:38px;
+}
+.msg {
+	background:#fdecec url(../img/ok.png) no-repeat 10px 22.5px;
+	border:1px solid #f68a8a;
+}
+/* 6.菜单区，设置图标的样式  */
+.menu>ul{
+	border:1px solid yellow;
+	width:960px;
+    height:91px;
+	margin:0px auto;
+	list-style-type:none;
+}
+.menu li {
+	border:1px solid red;
+	width:68px;
+	height:77px;
+	margin:7px 14px;
+	padding:0;
+	float:left;
+}
+.menu .index {
+	background-image:url(../img/index_on.png);
+}
+.menu .index:hover {
+	background-image:url(../img/index_out.png);
+}
+.menu .role {
+	background-image:url(../img/role_on.png);
+}
+.menu .role:hover {
+	background-image:url(../img/role_out.png);
+}
+.menu .admin {
+	background-image:url(../img/admin_on.png);
+}
+.menu .admin:hover {
+	background-image:url(../img/admin_out.png);
+}
+.menu .fee {
+	background-image:url(../img/fee_on.png);
+}
+.menu .fee:hover {
+	background-image:url(../img/fee_out.png);
+}
+.menu .account {
+	background-image:url(../img/account_on.png);
+}
+.menu .account:hover {
+	background-image:url(../img/account_out.png);
+}
+.menu .service {
+	background-image:url(../img/service_on.png);
+}
+.menu .service:hover {
+	background-image:url(../img/service_out.png);
+}
+.menu .bill {
+	background-image:url(../img/bill_on.png);
+}
+.menu .bill:hover {
+	background-image:url(../img/bill_out.png);
+}
+.menu .report {
+	background-image:url(../img/report_on.png);
+}
+.menu .report:hover {
+	background-image:url(../img/report_out.png);
+}
+.menu .information {
+	background-image:url(../img/information_on.png);
+}
+.menu .information:hover {
+	background-image:url(../img/information_out.png);
+}
+.menu .password {
+	background-image:url(../img/password_on.png);
+}
+.menu .password:hover {
+	background-image:url(../img/password_out.png);
+}
+/*去掉多余的边框*/
+  div,.menu>ul,.menu li {
+     border:0;
+  }

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+ <style>
+   div {
+      border:1px solid red;
+      width:220px;
+      height:220px;
+      margin:30px auto;
+   }
+   .show{
+     display:inline-block;
+   }
+   .hide {
+     display:none;
+   }
+ </style>
+ 
+ <script>
+    var id;
+    var n = 0;
+    window.onload = function(){
+    	start();
+    }
+    function start(){
+    	   id = setInterval(function(){
+        	var imgs = document.getElementsByTagName("img");
+           	//将所有图片都影藏
+           	for(var num=0;num<imgs.length;num++){
+           		imgs[num].className = "hide";
+           	}
+           	//下一张图片
+           	var next = n%imgs.length;
+           	imgs[next].className = "show";
+           	n++;
+           },2000);
+    }
+    function stop(){
+    	if(id){
+    		clearInterval(id);
+    		id = null;
+    	}
+    }
+ </script>
+</head>
+<body>
+    <!-- 悬停hover是伪类选择器
+    onmouseover:鼠标悬停事件
+    onmouseout:鼠标移开事件
+    -->
+   <div onmouseover="stop()" onmouseout="start()">
+      <img src="../images/01.jpg" name="showimg"  class="hide" />
+      <img src="../images/02.jpg" name="showimg"  class="hide" />
+      <img src="../images/03.jpg" name="showimg"  class="hide" />
+      <img src="../images/04.jpg" name="showimg"  class="hide" />
+      <img src="../images/05.jpg" name="showimg"  class="hide" />
+      <img src="../images/06.jpg" name="showimg"  class="hide" />
+   </div>
+</body>
+</html>

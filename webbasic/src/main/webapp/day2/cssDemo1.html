@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+  #d0,p{
+    border:1px solid red;
+    width:500px;
+  }
+  #d1,#d2,#d3 {
+      width:100px;
+      height:100px;
+      margin:10px;
+  }
+  #d1 {
+     background-color:red;
+  }
+   #d2 {
+     background-color:green;
+  }
+   #d3 {
+     background-color:blue;
+  }
+  /* 让三个小div浮动 */
+  #d1,#d2,#d3 {
+    /*  float:right; */
+     float:left;
+  } 
+</style>
+</head>
+<body>
+	<div id="d0">
+	    <div id="d1"></div>
+		<div id="d2"></div>
+		<div id="d3"></div>
+	</div>
+    <p>浮动时观察我的位置</p>
+</body>
+</html>

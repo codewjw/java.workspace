@@ -1,0 +1,47 @@
+/* 要让DIV水平和垂直居中，必需知道该DIV得宽度和高度，
+  然后设置位置为绝对位置，距离页面窗口左边框和上边框的距离设置为50%，
+  这个50%就是指页面窗口的宽度和高度的50%，
+  最后将该DIV分别左移和上移，
+  左移和上移的大小就是该DIV宽度和高度的一半。 */
+body{
+	background-image:url(../images/2.jpg);
+    background-repeat:no-repeat;
+     /* background-position:center; */
+}
+.l_center{
+    width:600px;
+    height:500px;
+    position:absolute;
+    left:50%;
+    top:50%;
+    /* margin:-150px 0 0 -150px; */
+    margin-left:-300px;
+    margin-top:-250px;
+   /*  border:1px solid red; */
+  }
+  p{
+    text-align:left;
+  }
+  #regist{
+    display:none;
+  }
+  .l_center2{
+    width:500px;
+    height:300px;
+    position:relative;
+    left:50%; 
+    top:50%;
+    margin-left:-250px;
+    margin-top:-150px;
+  }
+ .warnColor {
+   color:red;
+ }
+ .btn-size{
+  width:80px;
+  margin-right:100px;
+  margin-left:50px;
+ }
+ /* .btn-position{
+  text-align:center;
+ } */

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>联动菜单</title>
+	<script>
+	   var cities;
+	   window.onload = function(){
+		    cities = [["济南","菏泽","青岛","烟台"],
+		                 ["石家庄","廊坊","保定"],
+		                 ["南京","苏州","无锡","温州"]];
+	   }
+	   function change(){
+		    // option上不加value，获取的select的值就是选中的option的内容
+		    //option上加了value，获取的select的值就是选中的option的value值
+		    var p = document.getElementById("province").value;
+		   //获取数组下标对应的城市,待加的城市
+		   var pCities = cities[p];
+		   //先删除原本的旧城市,获取城市下拉选中的所有城市
+		    var sCities =  document.getElementById("city");
+		    /* var options = sCities.getElementsByTagName("option");
+		    for(var n=options.length-1;n>0;n--){
+		    	//删除节点
+		    	sCities.removeChild(options[n]);
+		    } */
+		    sCities.innerHTML = "<option value='-1'>请选择</option>"
+		    //追加城市
+		    for(var num=0;num<pCities.length;num++){
+		    	//创建节点
+		    	var opt = document.createElement("option");
+		    	//设置节点属性、内容
+		    	opt.innerHTML = pCities[num];
+		    	opt.setAttribute("value",(num+1));
+		    	//追加城市
+		    	sCities.appendChild(opt);
+		    	
+		    }
+	   }
+	</script>
+</head>
+<body>
+        省：<select id="province" onchange="change()">
+        <option value="-1">请选择</option>
+        <option value="0">山东省</option>
+        <option value="1">河北省</option>
+        <option value="2">江苏省</option>   
+       </select>
+       市：<select id="city">
+        <option value="-1">请选择</option> 
+       </select>
+</body>
+</html>

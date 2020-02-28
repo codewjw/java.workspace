@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>管理员列表</title>
+<link rel="stylesheet" href="list.css" />
+</head>
+<body>
+<!--1 logo区-->
+<div class="logo">
+ <img src="../img/logo.png" />
+ <a href="#">[退出]</a>
+</div>
+<!--2 菜单区 -->
+<div class="menu">
+  <ul> 
+     <li class="index"></li>
+     <li class="role"></li>
+     <li class="admin"></li>
+     <li class="fee"></li>
+     <li class="account"></li>
+     <li class="service"></li>
+     <li class="bill"></li>
+     <li class="report"></li>
+     <li class="information"></li>
+     <li class="password"></li>
+  </ul>
+</div>
+<!--3 内容区  -->
+<div class="core">
+<!--渐变条  -->
+    <!-- 内容区 -->
+	<div class="content">
+	    <!--按钮区  -->
+		 <div class="btn">
+		   <input type="button" class="btnc" value="查看" />
+		 </div>
+		<!--数据区  -->
+		 <div class="data">
+		   <table>
+		     <thead>
+		        <tr>
+		           <td><input type="checkbox" />全选</td>
+		           <td>管理员id</td>
+		           <td>管理员姓名</td>
+		           <td>拥有角色</td>
+		           <td>操作</td>
+		        </tr>
+		     </thead>
+		     <tbody>
+		      <tr>
+		        <td><input type="checkbox" /></td>
+		        <td>1</td>
+		        <td>陈大力</td>
+		        <td>老大</td>
+		        <td><input type="button" value="修改" class="update" />
+		        <input type="button" value="删除" class="delete" /></td>
+		      </tr>
+		      <tr>
+		        <td><input type="checkbox" /></td>
+		        <td>1</td>
+		        <td>陈大壮</td>
+		        <td>打铁</td>
+		        <td><input type="button" value="修改" class="update" />
+		        <input type="button" value="删除" class="delete" /></td>
+		      </tr>
+		      <tr>
+		        <td><input type="checkbox" /></td>
+		        <td>3</td>
+		        <td>陈大野</td>
+		        <td>打铁</td>
+		        <td><input type="button" value="修改" class="update" />
+		        <input type="button" value="删除" class="delete" /></td>
+		      </tr>
+		      <tr>
+		        <td><input type="checkbox" /></td>
+		        <td>4</td>
+		        <td>陈大强</td>
+		        <td>打铁</td>
+		        <td><input type="button" value="修改" class="update" />
+		        <input type="button" value="删除" class="delete" /></td>
+		      </tr>
+		     </tbody>
+		   </table>
+		 </div>
+		<!--分页区  -->
+		 <div class="page"></div>
+		 <!--消息区-->
+		 <div class="msg">
+		    <img src="../img/close.png" />
+		    <p>操作成功！</p>
+		 </div>
+	</div>
+</div>
+<!--4 版权区  -->
+<div class="right">
+  <p>版权所有哦！盗版必究哦！达内出品，必属精品！</p>
+</div>
+</body>
+</html>

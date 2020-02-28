@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+   p {
+     border:1px solid red;
+     width:200px;
+     height:40px;
+     line-height:40px;
+     text-align:center;
+   }
+</style>
+ <script>
+    var id;
+    function start(){
+    	//保证停止前只启动一次定时器
+       if(id){
+    	   return;
+       }
+       id = setInterval(function(){
+    	   var date = new Date();
+    	   var now = date.toLocaleTimeString();
+    	   document.getElementById("clock").innerHTML= now;
+       },1000);
+    }
+    function stop(){
+    	if(id){
+    		clearInterval(id);
+        	id = 0;
+        }
+    }
+    
+    var tid;
+    function send(){
+    	if(tid){
+    		return;
+    	}
+    	//显示正在发送
+    	var msg=document.getElementById("msg");
+    	msg.innerHTML = "正在发送......";
+    	//推迟三秒发送，显示为已发送
+        tid = setTimeout(function(){
+        	msg.innerHTML = "已发送!";
+        	//自动停止时，自动清空tid
+        	tid = null;
+        },3000)
+    }
+    function cancel(){
+    	var msg = document.getElementById("msg");
+    	if(tid){
+    		clearTimeout(tid);
+    		msg.innerHTML = "已撤销";
+    		tid = null;
+    	}
+    }
+ </script>
+</head>
+<body>
+   <input type="button" value="开始" onclick="start()"/>
+   <input type="button" value="停止" onclick="stop()"/>
+   <p id="clock"></p>
+   
+    <input type="button" value="发送" onclick="send()"/>
+   <input type="button" value="撤销" onclick="cancel()"/>
+   <p id="msg"></p>
+</body>
+</html>

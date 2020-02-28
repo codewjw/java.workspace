@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jQuery动画</title>
+<style>
+   div {
+     width:200px;
+     height:200px;
+     border:1px solid red;
+     background-color:green;
+     /*自定义动画基于定位  */
+     position:relative;
+   }
+</style>
+<script src="../js/jquery-1.11.1.js"></script>
+<script>
+   function f1(){
+	   //可加参数，亦可不加
+	   //参数2为函数，在动画完成时由jquery自动调用
+	    //某件事完成时，被自动调用的函数我们称之为回调函数
+	   //$("div").show(3000);
+	   $("div").show(3000,function(){
+		   console.log("COOL");
+	   });
+	   //动画的实现原理：通过定时器连续不断地修改元素的样式
+	   //定时器和主线程f2()并发执行
+	    //因此，当影藏时间较大时，下面那句话先执行了
+	   console.log("good");
+   }
+   function f2(){
+	    //可加参数，亦可不加
+	    //参数2为函数，在动画完成时由jquery自动调用
+	    //某件事完成时，被自动调用的函数我们称之为回调函数
+	     //$("div").hide(3000);
+	    $("div").hide(3000,function(){
+	    	 console.log("over!");
+	    });
+	   //动画的实现原理：通过定时器连续不断地修改元素的样式
+	   //定时器和主线程f2()并发执行
+	    //因此，当影藏时间较大时，下面那句话先执行了
+	    console.log("OK!");
+   }
+   
+   $(function(){
+	   //给div绑定悬停事件
+	   $("div").hover(
+			   function(){
+				  //$(this).animate({},1000,function(){})
+				  $(this).animate({'right':'-20px'},1000);
+			   },
+			   function(){
+				   $(this).animate({'right':'0px'},1000);
+	   });
+   });
+</script>
+</head>
+<body>
+ <input type="button" value="显示" onclick="f1()"/>
+ <input type="button" value="影藏" onclick="f2()"/>
+ <div></div>
+</body>
+</html>

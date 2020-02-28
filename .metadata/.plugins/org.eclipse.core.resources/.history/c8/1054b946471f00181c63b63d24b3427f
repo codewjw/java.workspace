@@ -1,0 +1,249 @@
+package cn.tedu.test;
+
+import java.util.List;
+import java.util.Set;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+import org.junit.Test;
+
+import cn.tedu.Student;
+import cn.tedu.TBook;
+import cn.tedu.TUser;
+import cn.tedu.Teacher;
+import cn.tedu.User;
+
+public class TestCase {
+	public static Session openSession(){
+		//读取数据库配置信息
+		Configuration cfg=new Configuration();
+		cfg.configure("hibernate.cfg.xml");
+		//获取session对象
+		SessionFactory factory
+				=cfg.buildSessionFactory();
+		Session session=factory.openSession();
+		return session;
+	}
+	//@Test
+	public void testUser(){
+		//读取配置文件
+		Configuration cfg
+			=new Configuration();
+		cfg.configure("hibernate.cfg.xml");
+		//获取session对象
+		SessionFactory factory
+			=cfg.buildSessionFactory();
+		Session session=factory.openSession();
+		//通过session操作数据库
+		User u
+			=(User) session.get(User.class, 1);
+		System.out.println(u);
+		session.close();
+	}
+	//@Test
+	public void testStudent(){
+		//读取数据库配置信息
+		Configuration cfg=new Configuration();
+		cfg.configure("hibernate.cfg.xml");
+		//获取session对象
+		SessionFactory factory
+					=cfg.buildSessionFactory();
+		Session session=factory.openSession();
+		//创建事务
+		Transaction t=session.beginTransaction();
+		t.begin();
+		//创建student对象,给name属性赋值
+		Student stu=new Student();
+		stu.setName("Alice");
+		System.out.println(stu);
+		session.save(stu);
+		System.out.println(stu);
+		t.commit();
+		//session.save(对象)
+		session.close();
+	}
+	//配置映射文件 Teacher.hbm.xml
+	//插入一条数据到表中
+	//@Test
+	public void testTeacher(){
+		//读取数据库配置信息
+		Configuration cfg=new Configuration();
+		cfg.configure("hibernate.cfg.xml");
+		//获取session对象
+		SessionFactory factory
+				=cfg.buildSessionFactory();
+		Session session=factory.openSession();
+		//创建事务
+		Transaction t=session.beginTransaction();
+		t.begin();
+		//创建student对象,给name属性赋值
+		Teacher stu=new Teacher();
+		stu.setName("Alice");
+		System.out.println(stu);
+		session.save(stu);
+		System.out.println(stu);
+		t.commit();
+		//session.save(对象)
+		session.close();
+	}
+	//@Test
+	public void testUpdate(){
+		//读取数据库配置信息
+		Configuration cfg=new Configuration();
+		cfg.configure("hibernate.cfg.xml");
+		//获取session对象
+		SessionFactory factory
+				=cfg.buildSessionFactory();
+		Session session=factory.openSession();
+		Transaction t=session.beginTransaction();
+		t.begin();
+		Student stu
+				=(Student) session.get(Student.class, 4);
+		System.out.println(stu);
+		stu.setName("Tom");
+		System.out.println(stu);
+		t.commit();
+	    session.close();
+	}
+	//@Test
+	public void testDelete(){
+		Session s=openSession();
+		Transaction t=s.beginTransaction();
+		t.begin();
+		Student stu
+				=(Student) s.get(Student.class, 1);
+		System.out.println(stu);
+		s.delete(stu);
+		t.commit();
+		s.close();
+	}
+	//@Test
+	public void testEvict(){
+		Session s=openSession();
+		Transaction t=s.beginTransaction();
+		t.begin();
+		Student stu
+				=(Student) s.get(Student.class,2);
+		System.out.println(stu);
+		s.evict(stu);//在session中清除一个对象
+		stu.setName("Robin");
+		System.out.println(stu);
+		t.commit();
+		s.close();
+	}
+	//@Test
+	public void testObjUpdate(){//游离状态回到持久状态
+		Session s=openSession();
+		Transaction t=s.beginTransaction();
+		t.begin();
+		//获取持久状态的对象
+		Student stu
+				=(Student) s.get(Student.class, 2);
+		//将对象的状态变成游离状态
+		s.evict(stu);
+		//让对象回到持久状态
+		stu.setName("Robin");
+		s.update(stu);
+		t.commit();
+		s.close();
+	}
+	//@Test
+	public void testSelect(){
+		//1-获取session
+		Session s=openSession();
+		//2-编写HQL语句
+		String hql="from Student";
+		//3-创建Query对象
+		Query query=s.createQuery(hql);
+		//4-调用list()方法查询数据
+		List<Student> list
+				=query.list();
+		for(Student stu:list){
+			System.out.println(stu);
+		}
+		//5-关闭session
+		s.close();
+	}
+	//@Test
+	public void testWhere(){
+		//1-获取session
+		Session s=openSession();
+		//2-编写HQL语句
+		String hql="from Student where name=:name";		
+		//3-创建Query对象
+		Query query=s.createQuery(hql);
+		//4-设置参数
+		query.setString("name","Alice");
+		//5-调用list()方法查询数据
+		List<Student> list=query.list();
+		for(Student stu:list){
+			System.out.println(stu);
+		}
+		//6-关闭session
+		s.close();		
+	}
+	//Student查询所有记录,以ID倒序的方式显示出来
+	//@Test
+	public void testOrder(){
+		Session s=openSession();
+		String hql="from Student order by id desc";
+		Query q=s.createQuery(hql);
+		List<Student> list=q.list();
+		for(Student stu:list){
+			System.out.println(stu);
+		}
+		s.close();
+	}
+	//@Test
+	public void testOne2Many(){
+		Session s=openSession();
+		Transaction t=s.beginTransaction();
+		t.begin();
+		TUser user
+			=(TUser) s.get(TUser.class,1);
+		System.out.println(user.getId());
+		System.out.println(user.getName());
+		Set<TBook> books=user.getBooks();
+		for(TBook b:books){
+			System.out.println(b);
+		}
+		t.commit();
+		s.close();
+	}
+	@Test
+	public void test(){
+		Session s=openSession();
+		//Transaction t=s.beginTransaction();
+		//t.begin();
+		User u1=(User) s.get(User.class, 1);
+		System.out.println(u1.getId());
+		System.out.println(u1.getName());
+		System.out.println("------------------------");
+		User u2=(User) s.get(User.class, 1);
+		System.out.println(u2.getId());
+		System.out.println(u2.getName());
+		System.out.println("-------------------------");
+		System.out.println(u1==u2);
+		//t.commit();
+		s.close();
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

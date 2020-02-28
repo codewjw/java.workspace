@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd"><!--声明决定xml文件可使用哪些标签-->
+<struts>
+  <!-- 配置主控制器 -->
+  <package name="demo" namespace="/demo" extends="struts-default">
+   <!-- 注册拦截器 -->
+   <interceptors>
+    <interceptor name="inter" class="cn.tedu.DemoInterceptor">
+    </interceptor>
+   </interceptors>
+    <action name="hello" class="cn.tedu.HelloAction" method="execute">
+    <!-- 不指定方法名，默认execute,execute方法返回success的时候转发到-->
+     <result name="success">
+       /WEB-INF/msg.jsp
+     </result>
+     <!-- 引用拦截器 -->
+     <interceptor-ref name="inter"></interceptor-ref>
+    </action>
+  </package>
+</struts>

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="MavenProjectWizardArchetypePage">
+		<item key="catalog" value="All Catalogs"/>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.pom.overview">
+		<list key="issueManagementUrl">
+		</list>
+		<list key="issueManagementSystem">
+		</list>
+		<list key="ciManagementUrl">
+		</list>
+		<list key="ciManagementSystem">
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.pom.dependencies">
+	</section>
+	<section name="org.eclipse.m2e.core.ui.internal.dialogs.MavenRepositorySearchDialog">
+		<item key="height" value="728"/>
+		<item key="width" value="477"/>
+		<item key="y" value="0"/>
+		<item key="x" value="581"/>
+	</section>
+	<section name="MavenProjectWizardLocationPage">
+		<list key="location">
+			<item value="F:\Users\Administrator\workspace\ssh04"/>
+			<item value="F:\Users\Administrator\workspace\ssh01"/>
+			<item value="F:\Users\Administrator\workspace\cloud-note"/>
+			<item value="F:\Users\Administrator\workspace\spring-ajax"/>
+			<item value="F:\Users\Administrator\workspace\ajax01"/>
+			<item value="F:\Users\Administrator\workspace\mybatis01"/>
+			<item value="F:\Users\Administrator\workspace\pratctice01"/>
+			<item value="F:\Users\Administrator\workspace\netctoss\src\main\webapp\WEB-INF\error.jsp"/>
+			<item value="F:\Users\Administrator\workspace\Servlet4\src\main\webapp\WEB-INF\web.xml"/>
+			<item value="F:\Users\Administrator\workspace\jsp2\src\main\webapp\WEB-INF\web.xml"/>
+			<item value="F:\Users\Administrator\workspace\empManager"/>
+			<item value="F:\Users\Administrator\workspace"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="Maven2ProjectWizardArchifactPage">
+		<list key="groupId">
+		</list>
+		<list key="package">
+		</list>
+		<list key="artifactId">
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+	<section name="MavenProjectImportWizardPage">
+		<list key="rootDirectory">
+			<item value="F:\Users\Administrator\workspace"/>
+			<item value="F:\Users\Administrator\workspace\cloud-note"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="MavenProjectWizardArtifactPage">
+		<list key="groupId">
+			<item value="cn.tedu.com"/>
+			<item value="redisMybatis"/>
+			<item value="cn.pome"/>
+			<item value="cn.tedu"/>
+			<item value="cn.tedu.ajax"/>
+		</list>
+		<list key="name">
+		</list>
+		<list key="artifactId">
+			<item value="redisMybatis"/>
+			<item value="cn.tedu.com"/>
+			<item value="poetry"/>
+			<item value="hibernate"/>
+			<item value="ssh04"/>
+			<item value="ssh03"/>
+			<item value="ssh02"/>
+			<item value="ssh01"/>
+			<item value="aopdemo"/>
+			<item value="aopDemo"/>
+			<item value="reflectdemo"/>
+			<item value="binary"/>
+			<item value="cloud-note"/>
+			<item value="spring-ajax"/>
+			<item value="ajax02-json"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.ui.internal.dialogs.EditDependencyDialog">
+		<item key="width" value="480"/>
+		<item key="height" value="450"/>
+		<item key="x" value="720"/>
+		<item key="y" value="215"/>
+	</section>
+	<section name="org.eclipse.m2e.editor.dialogs.ManageDependenciesDialog">
+		<item key="width" value="827"/>
+		<item key="height" value="450"/>
+		<item key="x" value="547"/>
+		<item key="y" value="215"/>
+	</section>
+</section>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"  
+	xmlns:jee="http://www.springframework.org/schema/jee" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+	<!-- 组件扫描 -->
+	<context:component-scan base-package="cn.tedu.note.controller" />
+	<!-- MVC注解扫描 -->
+	<mvc:annotation-driven />
+	<!-- 配置视图解析器 -->
+	<!--  <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"> -->
+	<!--    前缀+视图名+后缀=整个视图的路径 -->
+	<!--   <property name="prefix" value="/WEB-INF/" />
+	  <property name="suffix" value=".jsp" />
+	</bean>  -->
+	<!-- 扫描拦截器组件 -->
+    <context:component-scan base-package="cn.tedu.note.web" />
+    <!-- 配置拦截器-->
+    <mvc:interceptors>
+       <mvc:interceptor>
+        <mvc:mapping path="/note/*"/>
+        <mvc:mapping path="/notebook/*"/>
+        <!-- 拦截器类的bean的Id,也可用bean的类名 -->
+        <ref bean="accessInterceptor" />
+       </mvc:interceptor>
+     </mvc:interceptors>
+     
+     <!-- 文件上传的配置 -->
+    <bean id="multipartResolver"
+    class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    <!-- one of the properties available; the maximum file size in bytes -->
+    <!-- 上传文件的大小100000指100k-->
+    <property name="maxUploadSize" value="10000000"/>
+    <!-- 设置文件上载的编码 -->
+    <property name="defaultEncoding" value="utf-8" />
+</bean>
+</beans>

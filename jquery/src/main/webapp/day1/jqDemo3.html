@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-1.11.1.js"></script>
+<script>
+  //相当于 window.onload = function(){}
+  $(function(){
+	  //1基本选择器
+	  //2层次选择器
+	  //选择gz的下一个弟弟
+	  console.log($("#gz+li"));
+	  //选择gz的所有弟弟
+	  console.log($("#gz~li"));
+	  //3过滤选择器
+	    //1）基本过滤（*常用）
+	    console.log($("li:first"));
+	    console.log($("li:last"));
+	    console.log($("li:even"));
+	    console.log($("li:odd"));
+	    //选择前两个li
+	    console.log($("li:lt(2)"));
+	    console.log($("li:eq(2)"));
+	    //选择前三个之后的所有li
+	    console.log($("li:gt(2)"));
+	    console.log($("li:not(#gz)"));
+	    //2）内容过滤
+	    console.log($("li:contains('州')"));
+	    console.log($("li:empty"));
+	    //3）可见性过滤
+	    console.log($("li:hidden"));
+	    //4）属性过滤
+	    console.log($("li[id]"));
+	    console.log($("li[id='gz']"));
+	    console.log($("li[name]"));
+	    console.log($("li[name='sz']"));
+	    //5） 状态过滤
+	    console.log($("input:disabled"));
+	    console.log($("input:checked"));
+	  //4表单选择器
+	  console.log($("input:radio"));
+	  console.log($(":radio"));
+  });
+</script>
+</head>
+<body>
+   <ul>
+     <li>北京</li>
+     <li>上海</li>
+     <li id="gz" name="gz">广州</li>
+     <li id="sz" name="sz">深圳</li>
+     <li>武汉</li>
+     <li>南京</li>
+     <li>天津</li>
+     <li>杭州</li>
+     <li style="display:none">苏州</li>
+   </ul>
+   <!-- readonly：只读 ，数据依然可以提交给服务器-->
+   <!-- disabled:禁用，数据无法提交给服务器-->
+   <p>账号：<input type="text" disabled /></p>
+   <p>密码：<input type="password"  /></p>
+   <p>
+   <input type="radio" name="sex" value="男" checked/>男
+   <input type="radio" name="sex" value="女"/>女
+   </p>
+</body>
+</html>

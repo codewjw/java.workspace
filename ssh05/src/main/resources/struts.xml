@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd"><!--声明决定xml文件可使用哪些标签-->
+<struts>
+   <package name="test" namespace="/test" 
+   extends="json-default">
+   <action name="login" class="loginAction" method="doLogin">
+     <result name="success" type="dispatcher">
+       /WEB-INF/msg.jsp
+     </result>
+   </action>
+   </package>
+</struts>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+    <!-- 标题 -->
+	<h1>苍老师</h1>
+	<h2>苍老师</h2>
+	<h3>苍老师</h3>
+	<h4>苍老师</h4>
+	<h5>苍老师</h5>
+	<h6>苍老师</h6>
+	<p>Hello,world!</p>
+	<p>hi,美女</p>
+	<p>你好！世界真美丽,<a href="#cang">苍老师</a>！</p>
+	<!-- 有序列表 -->
+	<ol>
+	<li>湖北省</li>
+	<li>山东省</li>
+	<li>广东省</li>
+	</ol>
+	<!--  无序列表-->
+	<ul>
+	<li>武汉市</li>
+	<li>上海市</li>
+	<li>深圳市</li>
+	</ul>
+	<!-- 嵌套列表 -->
+	<ol>
+	  <li>湖北省
+		  <ul>
+			  <li>武汉市</li>
+			  <li>孝感市</li>
+			  <li>襄阳市</li>
+		  </ul>
+	  </li>
+	  <li>山东省
+		    <ul>
+		     <li>济南市</li>
+		     <li>菏泽市</li>
+		     <li>青岛市</li>
+		    </ul>
+	  </li>
+	</ol>
+	<!-- 行内元素 -->
+	<p>武汉市洪山区首义路首义广场<span style="color:red;">光谷大厦</span>B座8层</p>
+	<p>武汉市<i>洪山区</i>首义路首义广场<em>光谷大厦</em>B座8层</p>
+	<p>武汉市<strong>洪山区</strong>首义路首义广场<b>光谷大厦</b>B座8层</p>
+	<p>武汉市<u>洪山区</u>首义路首义广场<del>光谷大厦</del>B座8层</p>
+	<!-- 空格折叠的原则-->
+	<p>武汉市洪山区首义&nbsp;路首义广场光谷大厦B座8层,地址<br/>已经发过去了</p>
+	<!-- 加载图片 -->
+	<p>
+	  <!--图片和网页平级  -->
+	  <img src="01.jpg" />
+	  <!-- 图片在网页的下级-->
+	  <img src="images/02.jpg" />
+	  <!-- 图片在网页的上级 -->
+	  <img src="../03.jpg" />
+	  <!--通常的情况  -->
+	  <img src="../images/04.jpg">
+	</p>
+	<!--超链接-->
+	<!-- 普通用法-->
+	<p>
+	<a href="https://www.baidu.com">有事问度娘</a>
+	<a href="https://www.baidu.com" target="_blank">百度一下</a>
+	</p>
+	<!-- 链接到锚点 -->
+	<p>
+	  <a name="cang">苍老师</a>是个好老师，不断会拍片子，还会讲课，讲笑话
+	</p>
+	<!-- 锚点的特殊用法 ，网页的顶部默认是锚点，没有名字-->
+	<p>
+	  <a href="#">顶部</a>
+	</p>
+	<!-- 表格-->
+	<!-- 普通的表格 -->
+	<table border="1" cellspacing="0" width="10%">
+		<tr>
+		  <td>苍老师</td><td>范传奇</td>
+		</tr>
+		<tr>
+		  <td>王克星</td><td>程组红</td>
+		</tr>
+	</table>
+	<!-- 跨行跨列的表 -->
+	<table border="1" cellspacing="0" width="10%">
+		<tr>
+		  <td rowspan="2">苍老师</td><td>范传奇</td>
+		</tr>
+		<tr>
+		  <td>程组红</td>
+		</tr>
+	</table>
+	<table border="1" cellspacing="0" width="10%">
+		<tr>
+		  <td colspan="2">苍老师</td>
+		</tr>
+		<tr>
+		  <td>王克星</td><td>程组红</td>
+		</tr>
+	</table>
+	<!--行分组-->
+	<br/>
+	<table border="1" cellspacing="0" width="30%">
+	<thead>
+	  <tr>
+		  <td>编号</td>
+		  <td>名称</td>
+		  <td>金额</td>
+	  </tr>
+	</thead>
+	<tbody style="color:red;">
+	   <tr>
+		  <td>1</td>
+		  <td>鼠标</td>
+		  <td>58.8</td>
+	  </tr>
+	  <tr>
+		  <td>2</td>
+		  <td>键盘</td>
+		  <td>78.8</td>
+	  </tr>
+	</tbody>
+	<tfoot><tr>
+		  <td colspan="2">合计</td>
+		  <td>137.6</td>
+	  </tr></tfoot>
+	</table>
+</body>
+</html>

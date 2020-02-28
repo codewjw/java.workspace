@@ -1,0 +1,18 @@
+一.名词解释
+NETCTOSS
+Net 网络
+C China
+T Telecom
+O Operation
+S Support
+S System
+中国电信运营支持系统-网络版
+二.导jar包
+1.javaee(tomcat自带)
+2.JSTL(使用maven搜jstl,选择1.2)
+3.jdbc(使用maven搜ojdbc，选择)
+4.dbcp/c3p0(使用maven搜commons-dbcp，选择)
+
+jsp时间格式设置？
+JSTL的fmt.tld中formatDate来设置。
+JSTL的文件在META-INF中

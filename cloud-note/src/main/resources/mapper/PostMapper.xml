@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="cn.tedu.note.dao.PostDao">
+
+ <!-- 复杂映射必须使用resultMap进行处理，逐一映射每个属性 -->
+ <resultMap type="cn.tedu.note.entity.Post" id="postMap">
+ <!-- 数据库主键使用id映射，非主键使用result映射 -->
+  <id column="id" property="id" />
+  <result column="title" property="title"/>
+  <!-- 映射实体属性用association(关联)映射 -->
+  <association property="person"
+      javaType="cn.tedu.note.entity.Person">
+	  <id column="person_id" property="id"/>
+	  <result column="name" property="name"/>
+  </association>
+  <!-- 属性是一个集合，使用collection进行映射处理,column指定传过去的参数是当前表p_post中的某一列-->
+  <collection property="comments" select="findCommonsByPostId" 
+  column="id">
+  </collection>
+ </resultMap>
+ 
+ <!-- 查询出comment数据 -->
+ <select id="findCommonsByPostId" parameterType="int" 
+ resultType="cn.tedu.note.entity.Comment">
+  SELECT id,title,post_id FROM p_comment WHERE post_id=#{id}
+ </select>
+ 
+ <!--  <select id="findPostById" parameterType="int" 
+  resultType="cn.tedu.note.entity.Post"> -->
+  <select id="findPostById" parameterType="int" 
+  resultMap="postMap">
+  SELECT p.id,title,person_id,per.name 
+   FROM p_post p 
+   LEFT OUTER JOIN p_person per ON 
+    p.person_id=per.id
+   WHERE p.id=#{id}
+  </select>
+</mapper>

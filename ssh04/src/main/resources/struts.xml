@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd"><!--声明决定xml文件可使用哪些标签-->
+<struts>
+  <package name="test" namespace="/test" extends="struts-default">
+   <action name="stack" class="stackAction" method="doStack">
+    <result name="success" type="dispatcher">
+      /WEB-INF/msg.jsp
+    </result>
+   </action>
+  </package>
+  <package name="login" namespace="/login" extends="json-default">
+   <action name="login" class="loginAction" method="login">
+    <result name="success" type="json"> 
+     <param name="root">result</param>
+    </result>
+    <result name="error" type="json">
+     <param name="root">result</param>
+    </result>
+   </action>
+  </package>
+</struts>

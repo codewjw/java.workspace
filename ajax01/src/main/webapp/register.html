@@ -1,0 +1,51 @@
+<!Doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script src="js/ajax.js"></script>
+    <script>
+      function check(){
+    	  //step1.获得对象
+    	  var xhr = getXhr();
+    	  var uri = 'check.do?adminCode='+$F("adminCode");
+    	  //step2.发送请求
+    	  xhr.open('get',encodeURI(uri),true);
+    	  xhr.onreadystatechange = function(){
+    		  //step4.处理服务器返回的数据
+    		  if(xhr.readyState==4&&xhr.status==200){
+    			  var txt = xhr.responseText;
+    			  $("userwarning").innerHTML= txt;
+    		  }
+    	  }; //事件处理函数
+    	  xhr.send(null);
+      }
+      function $(id){
+    	  return document.getElementById(id);
+      }
+      function $F(id){
+    	  return $(id).value;
+      }
+    
+      function checkpwd(){
+    	  var xhr = getXhr();
+    	  var uri = "checkpwd.do?passwd="+$F("passwd");
+    	  xhr.open("get",encodeURI(uri),true);
+    	  xhr.onreadystatechange = function(){
+    		  if(xhr.readyState==4&&xhr.status==200){
+    			  var txt = xhr.responseText;
+    			  $("passwdwarning").innerHTML = txt;
+    		  }
+    	  };
+    	  xhr.send(null);
+      }
+     
+    </script>
+  </head>
+  <body style="font-size:30px;">
+   <form action="" method="post">
+       账号：<input type="text" id="adminCode" name="adminCode" onblur="check()" /><span id="userwarning"></span><br/>
+       密码：<input type="password" name="passwd" id="passwd" onblur="checkpwd()"/><span id="passwdwarning"></span> <br/>
+      <input type="submit" value="提交" />
+   </form>
+  </body>
+</html>

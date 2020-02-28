@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jquery读写增删节点</title>
+<script src="../js/jquery-1.11.1.js"></script>
+<script>
+  $(function(){
+	  //1.读写节点的内容，带标签和不带标签
+	   //1）html() ===innerHTML
+	   //2)text() ===innerText
+	  console.log($("p:first").html());
+      console.log($("p:first").text());
+      console.log($("p:first").html("1.jQuery支持<u>读写</u>节点"));
+      console.log($("p:first").html("1.jQuery支持<u>读写</u>节点").html());
+      console.log($("p:first").text("1.jQuery支持读写js节点"));
+      console.log($("p:first").text("1.jQuery支持读写js节点").text());
+	  //2.读写节点的值
+	  //val()===value
+	  console.log($(":text:first").val());
+	  console.log($(":text:first").val("BBB").val());
+	  //读写属性
+	  //attr() ===getAttribute()+setAttribute()
+	  console.log($("img:first").attr("src"));
+	  console.log($("img:first").attr("src","../images/02.jpg"));
+	  console.log($("img:first").attr("src","../images/02.jpg").attr("src"));
+	  
+	  //根据层次查询节点
+	  var gz = $("#gz");
+	  console.log(gz.parent()); //查父亲
+	  console.log(gz.parent().children());//查父亲的所有儿子
+	  console.log(gz.next()); //查后一个兄弟
+	  console.log(gz.prev()); //查前一个兄弟
+	  console.log(gz.siblings()); //查所有兄弟
+	  console.log(gz.parent().find("li")); //查制定的子孙后代
+  });
+  
+  function f1(){
+	  //创建节点
+	  var li = $("<li>杭州</li>");
+	  //后追加节点
+	  $("ul").append(li);
+	  var li2 = $("<li>苏州</li>");
+	  //前追加节点
+	  $("ul").prepend(li2);
+  }
+  function f2(){
+	  //创建节点
+	  var li = $("<li>杭州</li>");
+	  //后插入
+	  $("#gz").after(li);
+	  //前插入
+	  var li2 = $("<li>苏州</li>");
+	  $("#gz").before(li2);
+  }
+  function f3(){
+	  $("#gz").remove();
+  }
+</script>
+</head>
+<body>
+  <p>
+    1.jQuery支持<strong>读写</strong>节点
+  </p>
+  <p>
+    2.jQuery支持<b>增删</b>节点
+  </p>
+  <p>
+    3.jQuery支持<b>查询</b>节点
+  </p>
+  <p>
+    <input type="text" value="123" />
+  </p>
+  <p>
+   <img src="../images/01.jpg" />
+  </p>
+  <ul>
+    <li>深圳</li>
+    <li id="gz">广州</li>
+    <li>北京</li>
+    <li>上海</li>
+    <li>武汉</li>
+    <li>南京</li>
+    <li>天津</li>
+  </ul>
+  <p>
+    <input type="button" value="追加" onclick="f1();" />
+    <input type="button" value="插入" onclick="f2();" />
+    <input type="button" value="删除" onclick="f3();" />
+  </p>
+</body>
+</html>

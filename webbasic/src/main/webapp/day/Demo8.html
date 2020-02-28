@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+   /*1.元素(标签)选择器 */
+   /*2.class选择器，选择class=某值的元素 */
+  .poem{
+     color:pink;
+  }
+  /*3.id选择器：选择id=某值的唯一元素 */
+  #p4 {
+     color:red;
+  }
+  /*4选择器组:写出一组选择器，中间用逗号隔开，可以选中它们的并集(合计) */
+  .poem,#p4{
+     font-size:30px;
+     font-weight:bold;
+  }
+  /*5 派生选择器：选择 */
+  /*选择父元素下满足条件的子孙(子和孙都包括)*/
+  #p5 b{
+     color:red;
+  }
+  /*选择父元素下满足条件的儿子*/
+  #p5>b{
+    font-size:30px;
+  }
+  /*6 伪类选择器： */
+  /*6.1 选择所有未访问过（针对浏览器而言）的超链接 */
+  a:link {
+   color:green;
+  }
+  /*6.2 选择所有访问过（针对浏览器而言）的超链接*/
+  a:visited {
+   color:red;
+  }
+  /*6.3 选择激活态(正在被操作的)按钮 */
+  #b1:active {
+      background-color: yellow;
+  }
+  /*6.4 选择聚焦的文本框,光标在文本框中闪烁  */
+  #t1:focus {
+       background-color:green;
+  }
+  /*6.5 选择悬停态的图片  */
+  img:hover {
+       width:300px;
+       height:300px;
+  }
+</style>
+</head>
+<body>
+	<p class="poem">十里平湖霜满天</p>
+	<p>寸寸青丝愁华年</p>
+	<p class="poem">行单影只向对望</p>
+	<p id="p4">只羡鸳鸯不羡仙</p>
+	<p id="p5">北京市<u>海定区<b>北三环</b>西路</u>18号<b>中鼎大厦</b>B座7层</p>
+	<p>
+	 <a href="https://www.baidu.com">百度</a>
+	 <a href="https://www.mysql.com">mysql</a>
+	 <a href="https://www.hao123.com">hao123</a>
+	 <a href="https://www.oracle.com">oracle</a>
+	</p>
+	<p>
+	  <input type="button" id="b1" value="试试" />
+	</p>
+	<p>
+	  <input typpe="text" id="t1" />
+	</p>
+	<p>
+	  <img src="../images/01.jpg" />
+	  <img src="../images/02.jpg" />
+	  <img src="../images/03.jpg" />
+	</p>
+</body>
+</html>

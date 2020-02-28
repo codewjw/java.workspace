@@ -1,0 +1,33 @@
+<!Doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script src="js/ajax.js"></script>
+    <script>
+      function creatNum(){
+    	 var xhr = getXhr();
+    	 xhr.open('get','getNum.do?'+Math.random(),true);
+    	 xhr.onreadystatechange = function(){
+    		 if(xhr.readyState==4&&xhr.status==200){
+    			 $("number").value = xhr.responseText;
+    		 }
+    	 };
+    	 xhr.send(null);
+      }
+      function $(id){
+    	  return document.getElementById(id);
+      }
+      function $F(id){
+    	  return $(id).value;
+      }
+    
+     
+    </script>
+  </head>
+  <body style="font-size:30px;">
+   <form action="" >
+       <input type="text" id="number" name="number" />
+      <input type="button" value="生成随机整数" onclick="creatNum()"/>
+   </form>
+  </body>
+</html>

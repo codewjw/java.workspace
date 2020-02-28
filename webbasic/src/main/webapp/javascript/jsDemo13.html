@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+ 
+ <script>
+   
+   //onload是页面加载事件，在网页加载完成时，自动触发，触发时调用定义的函数
+   window.onload = function(){
+    //读写节点
+   //1.读写节点的名称和类型
+   var p1 = document.getElementById("p1");
+    console.log(p1.nodeName+","+p1.nodeType);
+    //2.读写节点的内容
+    //任何双标签中间的文本就是内容
+    //读取双标签中的所有HTML内容，包括其中的HTML标签
+    console.log(p1.innerHTML);
+    //只读双标签中的文本内容，不读HTML标签
+    console.log(p1.innerText);
+    p1.innerHTML ="1.dom提供了<u>读写</u>节点的方法";
+    console.log(p1.innerHTML);
+    //读写节点的值
+    //值：除了label之外的表单控件都有值，是一个空间属性
+    //双标签的控件有内容
+    
+   //读写节点属性
+   var img1 = document.getElementById("img1");
+    //获得属性
+   console.log(img1.getAttribute("src"));
+   //设置属性
+   img1.setAttribute("src","../images/02.jpg");
+   //删除属性
+   img1.removeAttribute("src");
+   //通过属性名读写几个属性
+   //元素兑现可用点获取属性的有id,style,className等
+   var a1 = document.getElementById("a1");
+   console.log(a1.style);
+   console.log(a1.style.color);
+   a1.style.color = "blue";
+   console.log(a1.style.color);
+   }
+ </script>
+
+</head>
+<body>
+    <p id="p1">1.dom提供了<b>读写</b>节点的方法</p>
+    <p id="p2">2.dom提供了<b>查询</b>节点的方法</p>
+    <p id="p3">3.dom提供了<b>增删</b>节点的方法</p>
+    <p>
+     <img src="../images/01.jpg" id="img1"/>
+    </p>
+    <p><a href="#" id="a1" style="color:red;">想去百度吗？</a></p>
+</body>
+</html>

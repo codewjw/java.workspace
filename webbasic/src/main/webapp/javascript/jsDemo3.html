@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script>
+   function squr(){
+	   var num = document.getElementById("squr").value;
+	   var result = 0;
+	   if(!isNaN(num)){
+		   result = parseInt(num)*parseInt(num);
+		   document.getElementById("result").innerHTML = result;
+	   }
+	   else{ 
+		   console.log("输入的不是一个数");
+	   }
+   }
+</script>
+</head>
+<body>
+ <input type="text" id="squr" />
+ <input type="button" value="平方" onclick="squr()" /> =
+ <span id="result"></span>
+</body>
+</html>

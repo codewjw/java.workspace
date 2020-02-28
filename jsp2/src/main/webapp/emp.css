@@ -1,0 +1,7 @@
+table {
+	border:1px solid red;
+	border-collapse:collapse;/* ±ß¿òºÏ²¢ */
+}
+td {
+	border:1px solid red;
+}

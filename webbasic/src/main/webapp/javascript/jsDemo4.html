@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+ <script>
+   /* 页面加载时生成随机数，点击事件发生时使用随机数 */
+   var randNum = parseInt(Math.random()*100);
+   function guess(){
+	   var num = document.getElementById("num1").value;
+	   var result = document.getElementById("result");
+	   if(!isNaN(num)){
+		   var numv = parseInt(num);
+		   if(numv>randNum){
+			   result.innerHTML="大了";
+		   }else if(numv<randNum){
+			   result.innerHTML="小了";
+		   }else {
+			   result.innerHTML="猜对了";
+		   }
+	   }else {
+		   result.innerHTML="输入非数字元素";
+	   }
+   }
+ </script>
+</head>
+<body>
+   <input type="text" id="num1" />
+   <input type="button" id="btn1" onclick="guess()" value="猜一猜"/>
+   <span id="result"></span>
+</body>
+</html>

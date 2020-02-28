@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Spring MVC ajax demo</title>
+ <script src="js/jquery-1.4.3.js"></script>
+<script>
+$(function(){
+	$("#arr-data").click(getAjaxData);
+	$("#arr-data2").click(getAjaxData2);
+});
+ function getAjaxData(){
+	 $.ajax({
+		 "url":"demo/listMap.do",
+		 "type":"get",
+		 "dataType":"json",
+		 "success":function(obj){
+			 //var str ="";
+			 for(var i=0;i<obj.length;i++){
+				 //str += obj[i].age+","+obj[i].name+","+obj[i].price+" ";
+				 $("#result").append(obj[i].age+","+obj[i].name+","+obj[i].price+'<br/>') 
+			 }
+			 //$("#result").html(str);
+		 },
+         "error":function(){
+        	 alert("通信故障");
+         }
+	 });
+ }
+ 
+ function getAjaxData2(){
+	 $.ajax({
+		 "url":"demo/array.do",
+		 "type":"get",
+		 "dataType":"json",
+		 "success":function(obj){
+			 $("#result2").html(obj+"");
+		 },
+         "error":function(){
+        	 alert("通信故障");
+         }
+	 });
+ }
+</script>
+</head>
+<body>
+ <h1>Spring MVC AJAX</h1>
+ <h2>获取List&lt;Map&gt;数组数据</h2>
+ <input type="button"  value="数组" id="arr-data"/>
+ <p id="result"></p>
+ 
+ <h2>获取数组数据</h2>
+ <input type="button"  value="数组" id="arr-data2"/>
+ <p id="result2"></p>
+</body>
+</html>
